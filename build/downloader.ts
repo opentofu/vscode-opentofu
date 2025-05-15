@@ -5,6 +5,8 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
+import * as tar from 'tar';
+
 import axios from 'axios';
 
 async function fileFromUrl(url: string): Promise<Buffer> {
@@ -70,6 +72,10 @@ function getExtensionInfo(): ExtensionInfo {
   };
 }
 
+function capitalize(s: string) {
+  return String(s[0]).toUpperCase() + String(s).slice(1);
+}
+
 async function downloadLanguageServer(platform: string, architecture: string, extInfo: ExtensionInfo) {
   const cwd = path.resolve(__dirname);
 
@@ -79,11 +85,8 @@ async function downloadLanguageServer(platform: string, architecture: string, ex
   const buildDir = path.basename(cwd);
   const repoDir = cwd.replace(buildDir, '');
   const installPath = path.join(repoDir, 'bin');
-  const filename = os === 'windows' ? 'opentofu-ls.exe' : 'opentofu-ls';
-  const packageName =
-    os === 'windows'
-      ? `opentofu-ls_${extInfo.languageServerVersion}_${os}_${arch}.exe`
-      : `opentofu-ls_${extInfo.languageServerVersion}_${os}_${arch}`;
+  const filename = os === 'windows' ? 'tofu-ls.exe' : 'tofu-ls';
+  const packageName = os === 'windows' ? `tofu-ls_${capitalize(os)}_${arch}.exe` : `tofu-ls_${capitalize(os)}_${arch}`;
   const filePath = path.join(installPath, filename);
   if (fs.existsSync(filePath)) {
     if (process.env.downloader_log === 'true') {
@@ -147,17 +150,22 @@ async function downloadSyntax(info: ExtensionInfo) {
 
 export async function fetchVersion(release: Release): Promise<void> {
   validateRelease(release);
-  await downloadBinary(release);
+  await downloadTarGz(release);
 }
 
-async function downloadBinary(release: Release) {
-  const url = `https://github.com/${release.repository}/releases/download/v${release.version}/${release.package}`;
+function untarFiles(path: string) {
+  tar.extract({
+    f: path,
+    C: 'bin',
+  });
+}
+
+async function downloadTarGz(release: Release) {
+  const url = `https://github.com/${release.repository}/releases/download/v${release.version}/${release.package}.tar.gz`;
 
   const fpath = path.join(release.destination, release.fileName);
 
   try {
-    //fs.mkdirSync(release.destination);
-
     const buffer = await fileFromUrl(url);
     fs.writeFileSync(fpath, buffer);
 
@@ -168,6 +176,8 @@ async function downloadBinary(release: Release) {
     if (process.env.downloader_log === 'true') {
       console.log(`Download completed`);
     }
+
+    untarFiles(fpath);
   } catch (error) {
     console.log(error);
     throw new Error(`Release download failed version: ${release.version}, fileName: ${release.fileName}`);

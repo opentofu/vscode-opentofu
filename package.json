@@ -17,7 +17,7 @@
     "vscode": "^1.88.0"
   },
   "langServer": {
-    "version": "0.2.0"
+    "version": "0.0.2"
   },
   "syntax": {
     "version": "0.7.0"
@@ -718,6 +718,7 @@
     "@zodios/plugins": "^10.6.0",
     "axios": "^1.7.4",
     "semver": "^7.5.4",
+    "tar": "^7.4.3",
     "vscode-languageclient": "^9.0.1",
     "vscode-uri": "^3.0.7",
     "which": "^4.0.0",
