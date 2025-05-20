@@ -86,8 +86,8 @@ async function downloadLanguageServer(platform: string, architecture: string, ex
   const buildDir = path.basename(cwd);
   const repoDir = cwd.replace(buildDir, '');
   const installPath = path.join(repoDir, 'bin');
-  const filename = os === 'windows' ? 'tofu-ls.exe' : 'tofu-ls';
-  const packageName = os === 'windows' ? `tofu-ls_${capitalize(os)}_${arch}.exe` : `tofu-ls_${capitalize(os)}_${arch}`;
+  const filename = 'tofu-ls';
+  const packageName = `tofu-ls_${capitalize(os)}_${arch}`;
   const filePath = path.join(installPath, filename);
   if (fs.existsSync(filePath)) {
     if (process.env.downloader_log === 'true') {
@@ -99,7 +99,7 @@ async function downloadLanguageServer(platform: string, architecture: string, ex
   fs.mkdirSync(installPath);
 
   await fetchVersion({
-    repository: 'gamunu/opentofu-ls',
+    repository: 'opentofu/tofu-ls',
     package: packageName,
     destination: installPath,
     fileName: filename,
@@ -151,7 +151,7 @@ async function downloadSyntax(info: ExtensionInfo) {
 
 export async function fetchVersion(release: Release): Promise<void> {
   validateRelease(release);
-  await downloadTarGz(release);
+  await downloadRelease(release);
 }
 
 function untarFiles(path: string) {
@@ -161,8 +161,10 @@ function untarFiles(path: string) {
   });
 }
 
-async function downloadTarGz(release: Release) {
+async function downloadRelease(release: Release) {
   const url = `https://github.com/${release.repository}/releases/download/v${release.version}/${release.package}.tar.gz`;
+
+  console.log('Downloading ', url);
 
   const fpath = path.join(release.destination, release.fileName);
 
