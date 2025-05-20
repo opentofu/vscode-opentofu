@@ -16,8 +16,8 @@ custom:
     type: enum
     enumOptions:
       - vscode-opentofu
-      - opentofu-ls
-      - terraform-schema
+      - tofu-ls
+      - opentofu-schema
       - hcl-lang
   - key: Issue
     label: Issue/PR Number
