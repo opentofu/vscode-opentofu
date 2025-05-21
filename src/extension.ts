@@ -3,7 +3,9 @@
 // Copyright (c) HashiCorp, Inc.
 // SPDX-License-Identifier: MPL-2.0
 
+import * as lsStatus from './status/language';
 import * as vscode from 'vscode';
+
 import {
   CloseAction,
   DocumentSelector,
@@ -16,22 +18,22 @@ import {
   RevealOutputChannelOn,
   State,
 } from 'vscode-languageclient/node';
-import { getServerOptions } from './utils/clientHelpers';
-import { GenerateBugReportCommand } from './commands/generateBugReport';
-import { ModuleCallsDataProvider } from './providers/terraform/moduleCalls';
-import { ModuleProvidersDataProvider } from './providers/terraform/moduleProviders';
-import { ServerPath } from './utils/serverPath';
 import { config, handleLanguageClientStartError } from './utils/vscode';
-import { ShowReferencesFeature } from './features/showReferences';
+
 import { CustomSemanticTokens } from './features/semanticTokens';
-import { ModuleProvidersFeature } from './features/moduleProviders';
-import { ModuleCallsFeature } from './features/moduleCalls';
-import { TerraformVersionFeature } from './features/terraformVersion';
+import { GenerateBugReportCommand } from './commands/generateBugReport';
 import { LanguageStatusFeature } from './features/languageStatus';
-import { getInitializationOptions } from './settings';
-import { TerraformLSCommands } from './commands/terraformls';
+import { ModuleCallsDataProvider } from './providers/terraform/moduleCalls';
+import { ModuleCallsFeature } from './features/moduleCalls';
+import { ModuleProvidersDataProvider } from './providers/terraform/moduleProviders';
+import { ModuleProvidersFeature } from './features/moduleProviders';
+import { ServerPath } from './utils/serverPath';
+import { ShowReferencesFeature } from './features/showReferences';
 import { TerraformCommands } from './commands/terraform';
-import * as lsStatus from './status/language';
+import { TerraformLSCommands } from './commands/terraformls';
+import { TerraformVersionFeature } from './features/terraformVersion';
+import { getInitializationOptions } from './settings';
+import { getServerOptions } from './utils/clientHelpers';
 
 const id = 'opentofu';
 const brand = `OpenTofu`;
@@ -81,7 +83,7 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
     initializationFailedHandler: (error: ResponseError<InitializeError> | Error | any) => {
       initializationError = error;
 
-      let msg = 'Failure to start opentofu-ls. Please check your configuration settings and reload this window';
+      let msg = 'Failure to start tofu-ls. Please check your configuration settings and reload this window';
 
       const serverArgs = config('opentofu').get<string[]>('languageServer.args', []);
       if (serverArgs[0] !== 'serve') {
@@ -160,10 +162,10 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
         // write to log and stop attempting to restart server
         // initializationFailedHandler will handle showing an error to user
         outputChannel.appendLine(
-          'Failure to start opentofu-ls. Please check your configuration settings and reload this window',
+          'Failure to start tofu-ls. Please check your configuration settings and reload this window',
         );
         return {
-          message: 'Failure to start opentofu-ls. Please check your configuration settings and reload this window',
+          message: 'Failure to start tofu-ls. Please check your configuration settings and reload this window',
           action: CloseAction.DoNotRestart,
         };
       },

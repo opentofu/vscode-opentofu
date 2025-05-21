@@ -6,6 +6,7 @@
 import * as path from 'path';
 import * as vscode from 'vscode';
 import * as which from 'which';
+
 import { config } from './vscode';
 
 const INSTALL_FOLDER_NAME = 'bin';
@@ -39,9 +40,9 @@ export class ServerPath {
     }
 
     if (process.platform === 'win32') {
-      return 'opentofu-ls.exe';
+      return 'tofu-ls.exe';
     }
-    return 'opentofu-ls';
+    return 'tofu-ls';
   }
 
   public async resolvedPathToBinary(): Promise<string> {
