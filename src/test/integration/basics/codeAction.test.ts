@@ -3,10 +3,12 @@
 // Copyright (c) HashiCorp, Inc.
 // SPDX-License-Identifier: MPL-2.0
 
-import * as vscode from 'vscode';
 import * as assert from 'assert';
-import { expect } from 'chai';
+import * as vscode from 'vscode';
+
 import { activateExtension, getDocUri, open, sleep } from '../../helper';
+
+import { expect } from 'chai';
 
 suite('code actions', () => {
   suite('format all', function suite() {
@@ -23,7 +25,7 @@ suite('code actions', () => {
 
     test('language is registered', async () => {
       const doc = await vscode.workspace.openTextDocument(docUri);
-      assert.equal(doc.languageId, 'terraform', 'document language should be `terraform`');
+      assert.equal(doc.languageId, 'opentofu', 'document language should be `opentofu`');
     });
 
     test('formats the document', async () => {

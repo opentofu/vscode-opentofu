@@ -3,8 +3,9 @@
 // Copyright (c) HashiCorp, Inc.
 // SPDX-License-Identifier: MPL-2.0
 
-import * as vscode from 'vscode';
 import * as assert from 'assert';
+import * as vscode from 'vscode';
+
 import { activateExtension, getDocUri, open, testHover } from '../../helper';
 
 suite('hover', () => {
@@ -22,7 +23,7 @@ suite('hover', () => {
 
     test('language is registered', async () => {
       const doc = await vscode.workspace.openTextDocument(docUri);
-      assert.equal(doc.languageId, 'terraform', 'document language should be `terraform`');
+      assert.equal(doc.languageId, 'opentofu', 'document language should be `opentofu`');
     });
 
     test('returns docs for terraform block', async () => {

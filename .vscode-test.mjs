@@ -5,8 +5,6 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-
-
 import { defineConfig } from '@vscode/test-cli';
 import fs from 'fs';
 import path from 'path';

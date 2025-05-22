@@ -34,7 +34,7 @@ function getPlatform(platform: string) {
 }
 
 function getArch(arch: string) {
-  // platform | terraform-ls  | extension platform | vs code editor
+  // platform | tofu-ls  | extension platform | vs code editor
   //    --    |           --  |         --         | --
   // macOS    | darwin_x86_64  | darwin_x64         | ✅
   // macOS    | darwin_arm64  | darwin_arm64       | ✅

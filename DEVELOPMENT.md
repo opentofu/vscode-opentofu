@@ -96,6 +96,14 @@ To run the `integration` tests in PowerShell, set the environment variable accor
 
 The tests can also be run within VSCode itself, using the launch task `Run Extension Tests`. This will open a new VS Code window, run the test suite, and exit with the test results.
 
+To run specific tests, use:
+
+
+```powershell
+> npm test -- -g "root document completion"
+```
+
+
 ### Acceptance Tests
 
 End to end acceptance tests with the extension running against the language server are a work in progress. An example can be seen in [`./src/test/integration/symbols.test.ts`](src/test/integration/symbols.test.ts).

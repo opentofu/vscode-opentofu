@@ -4,8 +4,10 @@
 // SPDX-License-Identifier: MPL-2.0
 
 import * as vscode from 'vscode';
-import { assert } from 'chai';
+
 import { activateExtension, getDocUri, open, testCompletion } from '../../helper';
+
+import { assert } from 'chai';
 
 const snippets = [
   new vscode.CompletionItem({ label: 'fore', description: 'For Each' }, vscode.CompletionItemKind.Snippet),
@@ -31,7 +33,7 @@ suite('completion', () => {
 
     test('language is registered', async () => {
       const doc = await vscode.workspace.openTextDocument(docUri);
-      assert.equal(doc.languageId, 'terraform', 'document language should be `terraform`');
+      assert.equal(doc.languageId, 'opentofu', 'document language should be `opentofu`');
     });
 
     test('simple completion', async () => {
@@ -70,7 +72,7 @@ suite('completion', () => {
 
     test('language is registered', async () => {
       const doc = await vscode.workspace.openTextDocument(docUri);
-      assert.equal(doc.languageId, 'terraform', 'document language should be `terraform`');
+      assert.equal(doc.languageId, 'opentofu', 'document language should be `opentofu`');
     });
 
     // Completion for inputs of a local module
@@ -97,9 +99,11 @@ suite('completion', () => {
         new vscode.CompletionItem('"./compute"', vscode.CompletionItemKind.Text),
       ];
 
-      if (vscode.version <= '1.82.3') {
-        expected.push(...snippets);
-      }
+      // TODO: This test is breaking on vscode 1.100.4.
+      // Comparing semver versions is not so simple as comparing the strings with <=
+      // if (vscode.version <= '1.82.3') {
+      // expected.push(...snippets);
+      // }
 
       // module "compute" {
       //   source = "./compute"
@@ -126,7 +130,7 @@ suite('completion', () => {
 
     test('language is registered', async () => {
       const doc = await vscode.workspace.openTextDocument(docUri);
-      assert.equal(doc.languageId, 'terraform', 'document language should be `terraform`');
+      assert.equal(doc.languageId, 'opentofu', 'document language should be `opentofu`');
     });
 
     test('inputs of a registry module', async () => {
@@ -157,7 +161,7 @@ suite('completion', () => {
 
     test('language is registered', async () => {
       const doc = await vscode.workspace.openTextDocument(docUri);
-      assert.equal(doc.languageId, 'terraform-vars', 'document language should be `terraform-vars`');
+      assert.equal(doc.languageId, 'opentofu-vars', 'document language should be `opentofu-vars`');
     });
 
     test('simple variable completion', async () => {

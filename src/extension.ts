@@ -38,8 +38,8 @@ import { getServerOptions } from './utils/clientHelpers';
 const id = 'opentofu';
 const brand = `OpenTofu`;
 const documentSelector: DocumentSelector = [
-  { scheme: 'file', language: 'terraform' },
-  { scheme: 'file', language: 'terraform-vars' },
+  { scheme: 'file', language: 'opentofu' },
+  { scheme: 'file', language: 'opentofu-vars' },
   { scheme: 'file', language: 'terraform-stack' },
   { scheme: 'file', language: 'terraform-deploy' },
 ];

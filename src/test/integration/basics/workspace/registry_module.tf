@@ -1,6 +1,6 @@
 module "vpc" {
-  source  = "terraform-aws-modules/vpc/aws"
-  version = "5.8.0"
+  source  = "registry.opentofu.org/terraform-aws-modules/vpc/aws"
+  version = "5.18.0"
 
   external_
 }

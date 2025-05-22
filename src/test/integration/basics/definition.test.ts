@@ -3,8 +3,9 @@
 // Copyright (c) HashiCorp, Inc.
 // SPDX-License-Identifier: MPL-2.0
 
-import * as vscode from 'vscode';
 import * as assert from 'assert';
+import * as vscode from 'vscode';
+
 import { activateExtension, getDocUri, open, testDefinitions } from '../../helper';
 
 suite('definitions', () => {
@@ -22,7 +23,7 @@ suite('definitions', () => {
 
     test('language is registered', async () => {
       const doc = await vscode.workspace.openTextDocument(docUri);
-      assert.equal(doc.languageId, 'terraform', 'document language should be `terraform`');
+      assert.equal(doc.languageId, 'opentofu', 'document language should be `opentofu`');
     });
 
     test('returns definition for module source', async () => {
@@ -77,7 +78,7 @@ suite('definitions', () => {
 
     test('language is registered', async () => {
       const doc = await vscode.workspace.openTextDocument(docUri);
-      assert.equal(doc.languageId, 'terraform-vars', 'document language should be `terraform-vars`');
+      assert.equal(doc.languageId, 'opentofu-vars', 'document language should be `opentofu-vars`');
     });
 
     test('returns definition for module source', async () => {

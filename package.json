@@ -57,11 +57,11 @@
   "contributes": {
     "languages": [
       {
-        "id": "terraform",
+        "id": "opentofu",
         "aliases": [
           "OpenTofu",
-          "opentofu",
           "tofu",
+          "terraform",
           "hcl"
         ],
         "extensions": [
@@ -70,7 +70,7 @@
         "configuration": "./language-configuration.json"
       },
       {
-        "id": "terraform-vars",
+        "id": "opentofu-vars",
         "extensions": [
           ".tfvars"
         ],
@@ -141,12 +141,12 @@
     ],
     "grammars": [
       {
-        "language": "terraform",
+        "language": "opentofu",
         "scopeName": "source.hcl.terraform",
         "path": "./syntaxes/terraform.tmGrammar.json"
       },
       {
-        "language": "terraform-vars",
+        "language": "opentofu-vars",
         "scopeName": "source.hcl.terraform",
         "path": "./syntaxes/terraform.tmGrammar.json"
       },
@@ -356,7 +356,7 @@
     },
     "snippets": [
       {
-        "language": "terraform",
+        "language": "opentofu",
         "path": "./snippets/opentofu.json"
       }
     ],

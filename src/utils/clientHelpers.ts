@@ -5,9 +5,11 @@
 
 import * as net from 'net';
 import * as vscode from 'vscode';
+
 import { Executable, InitializeResult, ServerOptions } from 'vscode-languageclient/node';
-import { config } from './vscode';
+
 import { ServerPath } from './serverPath';
+import { config } from './vscode';
 
 export async function getServerOptions(
   lsPath: ServerPath,

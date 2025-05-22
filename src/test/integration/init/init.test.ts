@@ -4,8 +4,10 @@
 // SPDX-License-Identifier: MPL-2.0
 
 import * as vscode from 'vscode';
+
+import { activateExtension, getDocUri, open, sleep, testCompletion } from '../../helper';
+
 import { assert } from 'chai';
-import { activateExtension, getDocUri, open, testCompletion, sleep } from '../../helper';
 
 suite('init', () => {
   suite('with bundled provider schema', function suite() {
@@ -22,7 +24,7 @@ suite('init', () => {
 
     test('language is registered', async () => {
       const doc = await vscode.workspace.openTextDocument(docUri);
-      assert.equal(doc.languageId, 'terraform', 'document language should be `terraform`');
+      assert.equal(doc.languageId, 'opentofu', 'document language should be `opentofu`');
     });
 
     test('completes resource available in bundled schema', async () => {
@@ -63,7 +65,7 @@ suite('init', () => {
 
     test('language is registered', async () => {
       const doc = await vscode.workspace.openTextDocument(docUri);
-      assert.equal(doc.languageId, 'terraform', 'document language should be `terraform`');
+      assert.equal(doc.languageId, 'opentofu', 'document language should be `opentofu`');
     });
 
     /* test('completes resource not available in downloaded schema', async () => {
@@ -121,7 +123,7 @@ suite('init', () => {
 
     test('language is registered', async () => {
       const doc = await vscode.workspace.openTextDocument(docUri);
-      assert.equal(doc.languageId, 'terraform', 'document language should be `terraform`');
+      assert.equal(doc.languageId, 'opentofu', 'document language should be `opentofu`');
     });
 
     test('completes module from downloaded schema', async () => {

@@ -15,7 +15,7 @@ describe('VS Code Extension Testing', () => {
     const extensions = await browser.executeWorkbench((vscodeApi) => {
       return vscodeApi.extensions.all;
     });
-    expect(extensions.some((extension) => extension.id === 'hashicorp.terraform')).toBe(true);
+    expect(extensions.some((extension) => extension.id === 'opentofu.opentofu')).toBe(true);
   });
 
   it('should show all activity bar items', async () => {

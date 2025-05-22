@@ -5,9 +5,11 @@
 
 import * as terraform from '../../api/terraform/terraform';
 import * as vscode from 'vscode';
-import { Utils } from 'vscode-uri';
+
 import { getActiveTextEditor, isTerraformFile } from '../../utils/vscode';
+
 import { LanguageClient } from 'vscode-languageclient/node';
+import { Utils } from 'vscode-uri';
 
 class ModuleProviderItem extends vscode.TreeItem {
   constructor(
@@ -38,7 +40,7 @@ export class ModuleProvidersDataProvider implements vscode.TreeDataProvider<Modu
     private client: LanguageClient,
   ) {
     ctx.subscriptions.push(
-      vscode.commands.registerCommand('terraform.providers.refreshList', () => this.refresh()),
+      vscode.commands.registerCommand('opentofu.providers.refreshList', () => this.refresh()),
       vscode.window.onDidChangeActiveTextEditor(async () => {
         // most of the time this is called when the user switches tabs or closes the file
         // we already check for state inside the getprovider function, so we can just call refresh here

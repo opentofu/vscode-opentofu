@@ -3,8 +3,8 @@
 // Copyright (c) HashiCorp, Inc.
 // SPDX-License-Identifier: MPL-2.0
 
-import * as vscode from 'vscode';
 import * as assert from 'assert';
+import * as vscode from 'vscode';
 
 export async function open(docUri: vscode.Uri): Promise<void> {
   try {
@@ -147,7 +147,7 @@ export async function testSymbols(docUri: vscode.Uri, symbolNames: string[]) {
 }
 
 export async function activateExtension() {
-  const ext = vscode.extensions.getExtension('hashicorp.terraform');
+  const ext = vscode.extensions.getExtension('opentofu.opentofu');
   if (!ext?.isActive) {
     await ext?.activate();
     await sleep(1000);

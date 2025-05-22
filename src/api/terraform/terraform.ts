@@ -4,10 +4,12 @@
 // SPDX-License-Identifier: MPL-2.0
 
 import * as vscode from 'vscode';
+
 import { ExecuteCommandParams, ExecuteCommandRequest, LanguageClient } from 'vscode-languageclient/node';
+
 import { Utils } from 'vscode-uri';
-import { getActiveTextEditor } from './../../utils/vscode';
 import { clientSupportsCommand } from './../../utils/clientHelpers';
+import { getActiveTextEditor } from './../../utils/vscode';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 export interface ModuleCaller {
@@ -55,7 +57,7 @@ export interface TerraformInfoResponse {
 /* eslint-enable @typescript-eslint/naming-convention */
 
 export async function terraformVersion(moduleUri: string, client: LanguageClient): Promise<TerraformInfoResponse> {
-  const command = 'terraform-ls.module.terraform';
+  const command = 'tofu-ls.module.terraform';
 
   const response = await execWorkspaceLSCommand<TerraformInfoResponse>(command, moduleUri, client);
 
@@ -63,7 +65,7 @@ export async function terraformVersion(moduleUri: string, client: LanguageClient
 }
 
 export async function moduleCallers(moduleUri: string, client: LanguageClient): Promise<ModuleCallersResponse> {
-  const command = 'terraform-ls.module.callers';
+  const command = 'tofu-ls.module.callers';
 
   const response = await execWorkspaceLSCommand<ModuleCallersResponse>(command, moduleUri, client);
 
@@ -71,7 +73,7 @@ export async function moduleCallers(moduleUri: string, client: LanguageClient): 
 }
 
 export async function moduleCalls(moduleUri: string, client: LanguageClient): Promise<ModuleCallsResponse> {
-  const command = 'terraform-ls.module.calls';
+  const command = 'tofu-ls.module.calls';
 
   const response = await execWorkspaceLSCommand<ModuleCallsResponse>(command, moduleUri, client);
 
@@ -79,7 +81,7 @@ export async function moduleCalls(moduleUri: string, client: LanguageClient): Pr
 }
 
 export async function moduleProviders(moduleUri: string, client: LanguageClient): Promise<ModuleProvidersResponse> {
-  const command = 'terraform-ls.module.providers';
+  const command = 'tofu-ls.module.providers';
 
   const response = await execWorkspaceLSCommand<ModuleProvidersResponse>(command, moduleUri, client);
 
@@ -102,7 +104,7 @@ export async function initAskUserCommand(client: LanguageClient) {
     }
 
     const moduleUri = selected[0];
-    const command = `terraform-ls.terraform.init`;
+    const command = `tofu-ls.terraform.init`;
 
     return execWorkspaceLSCommand<void>(command, moduleUri.toString(), client);
   } catch (error) {
@@ -173,7 +175,7 @@ async function terraformCommand(command: string, client: LanguageClient, useShel
     return;
   }
 
-  const fullCommand = `terraform-ls.terraform.${command}`;
+  const fullCommand = `tofu-ls.terraform.${command}`;
 
   return execWorkspaceLSCommand<void>(fullCommand, selectedModule, client);
 }
@@ -182,14 +184,14 @@ async function execWorkspaceLSCommand<T>(command: string, moduleUri: string, cli
   // record whether we use terraform.init or terraform.initcurrent vscode commands
   // this is hacky, but better than propagating down another parameter just to handle
   // which init command we used
-  if (command === 'terraform-ls.terraform.initCurrent') {
-    // need to change to terraform-ls command after detection
-    command = 'terraform-ls.terraform.init';
+  if (command === 'tofu-ls.terraform.initCurrent') {
+    // need to change to tofu-ls command after detection
+    command = 'tofu-ls.terraform.init';
   }
 
   const commandSupported = clientSupportsCommand(client.initializeResult, command);
   if (!commandSupported) {
-    throw new Error(`${command} not supported by this terraform-ls version`);
+    throw new Error(`${command} not supported by this tofu-ls version`);
   }
 
   const params: ExecuteCommandParams = {
