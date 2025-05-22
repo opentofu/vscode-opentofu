@@ -147,6 +147,7 @@ async function downloadSyntax(info: ExtensionInfo) {
 
   url = `https://github.com/hashicorp/syntax/releases/download/${release}/${hclSyntaxFile}`;
   await downloadFile(url, path.join(installPath, hclSyntaxFile));
+  console.log('Downloaded syntax');
 }
 
 export async function fetchVersion(release: Release): Promise<void> {

@@ -140,6 +140,8 @@ export async function testSymbols(docUri: vscode.Uri, symbolNames: string[]) {
     docUri,
   );
 
+  console.log('symbols', symbols);
+  console.log('docUri', docUri);
   assert.strictEqual(symbols.length, symbolNames.length);
   symbols.forEach((symbol, i) => {
     assert.strictEqual(symbol.name, symbolNames[i]);
