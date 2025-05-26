@@ -4,6 +4,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
 import * as vscode from 'vscode';
+
 import {
   BaseLanguageClient,
   ClientCapabilities,
@@ -11,8 +12,9 @@ import {
   ServerCapabilities,
   StaticFeature,
 } from 'vscode-languageclient';
-import { ModuleProvidersDataProvider } from '../providers/terraform/moduleProviders';
+
 import { ExperimentalClientCapabilities } from './types';
+import { ModuleProvidersDataProvider } from '../providers/terraform/moduleProviders';
 
 export const CLIENT_MODULE_PROVIDERS_CMD_ID = 'client.refreshModuleProviders';
 

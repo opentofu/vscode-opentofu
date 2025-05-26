@@ -57,7 +57,7 @@ export interface TerraformInfoResponse {
 /* eslint-enable @typescript-eslint/naming-convention */
 
 export async function terraformVersion(moduleUri: string, client: LanguageClient): Promise<TerraformInfoResponse> {
-  const command = 'tofu-ls.module.terraform';
+  const command = 'tofu-ls.module.tofu';
 
   const response = await execWorkspaceLSCommand<TerraformInfoResponse>(command, moduleUri, client);
 
@@ -104,7 +104,7 @@ export async function initAskUserCommand(client: LanguageClient) {
     }
 
     const moduleUri = selected[0];
-    const command = `tofu-ls.terraform.init`;
+    const command = `tofu-ls.tofu.init`;
 
     return execWorkspaceLSCommand<void>(command, moduleUri.toString(), client);
   } catch (error) {
@@ -175,7 +175,7 @@ async function terraformCommand(command: string, client: LanguageClient, useShel
     return;
   }
 
-  const fullCommand = `tofu-ls.terraform.${command}`;
+  const fullCommand = `tofu-ls.tofu.${command}`;
 
   return execWorkspaceLSCommand<void>(fullCommand, selectedModule, client);
 }
@@ -184,9 +184,9 @@ async function execWorkspaceLSCommand<T>(command: string, moduleUri: string, cli
   // record whether we use terraform.init or terraform.initcurrent vscode commands
   // this is hacky, but better than propagating down another parameter just to handle
   // which init command we used
-  if (command === 'tofu-ls.terraform.initCurrent') {
+  if (command === 'tofu-ls.tofu.initCurrent') {
     // need to change to tofu-ls command after detection
-    command = 'tofu-ls.terraform.init';
+    command = 'tofu-ls.tofu.init';
   }
 
   const commandSupported = clientSupportsCommand(client.initializeResult, command);

@@ -4,6 +4,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
 import child_process = require('child_process');
+
 import * as os from 'os';
 import * as vscode from 'vscode';
 
@@ -32,7 +33,7 @@ export class GenerateBugReportCommand implements vscode.Disposable {
         const extensions = this.getExtensions();
         const body = await this.generateBody(extensions, problemText);
         const encodedBody = encodeURIComponent(body);
-        const fullUrl = `https://github.com/gamunu/vscode-opentofu/issues/new?body=${encodedBody}`;
+        const fullUrl = `https://github.com/opentofu/vscode-opentofu/issues/new?body=${encodedBody}`;
         vscode.commands.executeCommand('vscode.open', vscode.Uri.parse(fullUrl));
       }),
     );

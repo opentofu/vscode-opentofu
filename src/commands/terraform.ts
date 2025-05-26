@@ -3,9 +3,10 @@
 // Copyright (c) 2024 HashiCorp, Inc.
 // SPDX-License-Identifier: MPL-2.0
 
-import * as vscode from 'vscode';
-import { LanguageClient } from 'vscode-languageclient/node';
 import * as terraform from '../api/terraform/terraform';
+import * as vscode from 'vscode';
+
+import { LanguageClient } from 'vscode-languageclient/node';
 
 export class TerraformCommands implements vscode.Disposable {
   private commands: vscode.Disposable[];
