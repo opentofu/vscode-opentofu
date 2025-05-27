@@ -40,8 +40,6 @@ const brand = `OpenTofu`;
 const documentSelector: DocumentSelector = [
   { scheme: 'file', language: 'opentofu' },
   { scheme: 'file', language: 'opentofu-vars' },
-  { scheme: 'file', language: 'terraform-stack' },
-  { scheme: 'file', language: 'terraform-deploy' },
 ];
 const outputChannel = vscode.window.createOutputChannel(brand);
 
