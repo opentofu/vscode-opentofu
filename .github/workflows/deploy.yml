@@ -16,7 +16,7 @@ on:
           - stable
           - prerelease
       langserver:
-        description: 'The terraform-ls version to use. If not specified will use version in package.json'
+        description: 'The tofu-ls version to use. If not specified will use version in package.json'
         required: false
         type: string
 
@@ -30,19 +30,19 @@ jobs:
             ls_target: web_noop
             npm_config_arch: x64
           - vsce_target: win32-x64
-            ls_target: windows_amd64
+            ls_target: windows_x86_64
             npm_config_arch: x64
           - vsce_target: win32-arm64
             ls_target: windows_arm64
             npm_config_arch: arm
           - vsce_target: linux-x64
-            ls_target: linux_amd64
+            ls_target: linux_x86_64
             npm_config_arch: x64
           - vsce_target: linux-arm64
             ls_target: linux_arm64
             npm_config_arch: arm64
           - vsce_target: darwin-x64
-            ls_target: darwin_amd64
+            ls_target: darwin_x86_64
             npm_config_arch: x64
           - vsce_target: darwin-arm64
             ls_target: darwin_arm64
