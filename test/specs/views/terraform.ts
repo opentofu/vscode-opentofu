@@ -27,13 +27,13 @@ describe('Terraform ViewContainer', function () {
     // TODO: Close the file
   });
 
-  it('should have terraform viewcontainer', async () => {
+  it('should have opentofu viewcontainer', async () => {
     const viewContainers = await workbench.getActivityBar().getViewControls();
     const titles = await Promise.all(viewContainers.map((vc) => vc.getTitle()));
     expect(titles).toContain('HashiCorp Terraform');
   });
 
-  describe('in an terraform project', () => {
+  describe('in an opentofu project', () => {
     before(async () => {
       const testFile = path.join(getTestWorkspacePath(), `sample.tf`);
       browser.executeWorkbench((vscode, fileToOpen) => {

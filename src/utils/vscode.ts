@@ -13,8 +13,8 @@ export function config(section: string, scope?: vscode.ConfigurationScope): vsco
 export function getScope(section: string, settingName: string): vscode.ConfigurationTarget {
   let target: vscode.ConfigurationTarget = vscode.ConfigurationTarget.Global;
 
-  // getConfiguration('terraform').inspect('languageServer');
-  // not getConfiguration('terraform').inspect('languageServer.external'); !
+  // getConfiguration('opentofu').inspect('languageServer');
+  // not getConfiguration('opentofu').inspect('languageServer.external'); !
   // can use when we extract settings
   const inspect = vscode.workspace.getConfiguration(section).inspect(settingName);
   if (inspect === undefined) {
@@ -52,7 +52,7 @@ export function isTerraformFile(document?: vscode.TextDocument): boolean {
 
   if (document.isUntitled) {
     // Untitled files are files which haven't been saved yet, so we don't know if they
-    // are terraform so we return false
+    // are opentofu so we return false
     return false;
   }
 

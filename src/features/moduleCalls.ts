@@ -14,7 +14,7 @@ import {
 } from 'vscode-languageclient';
 
 import { ExperimentalClientCapabilities } from './types';
-import { ModuleCallsDataProvider } from '../providers/terraform/moduleCalls';
+import { ModuleCallsDataProvider } from '../providers/opentofu/moduleCalls';
 
 const CLIENT_MODULE_CALLS_CMD_ID = 'client.refreshModuleCalls';
 
@@ -47,11 +47,11 @@ export class ModuleCallsFeature implements StaticFeature {
 
     if (!capabilities.experimental?.refreshModuleCalls) {
       console.log('Server does not support client.refreshModuleCalls');
-      await vscode.commands.executeCommand('setContext', 'terraform.modules.supported', false);
+      await vscode.commands.executeCommand('setContext', 'opentofu.modules.supported', false);
       return;
     }
 
-    await vscode.commands.executeCommand('setContext', 'terraform.modules.supported', true);
+    await vscode.commands.executeCommand('setContext', 'opentofu.modules.supported', true);
 
     const d = this.client.onRequest(CLIENT_MODULE_CALLS_CMD_ID, () => {
       this.view?.refresh();

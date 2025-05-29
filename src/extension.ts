@@ -23,9 +23,9 @@ import { config, handleLanguageClientStartError } from './utils/vscode';
 import { CustomSemanticTokens } from './features/semanticTokens';
 import { GenerateBugReportCommand } from './commands/generateBugReport';
 import { LanguageStatusFeature } from './features/languageStatus';
-import { ModuleCallsDataProvider } from './providers/terraform/moduleCalls';
+import { ModuleCallsDataProvider } from './providers/opentofu/moduleCalls';
 import { ModuleCallsFeature } from './features/moduleCalls';
-import { ModuleProvidersDataProvider } from './providers/terraform/moduleProviders';
+import { ModuleProvidersDataProvider } from './providers/opentofu/moduleProviders';
 import { ModuleProvidersFeature } from './features/moduleProviders';
 import { ServerPath } from './utils/serverPath';
 import { ShowReferencesFeature } from './features/showReferences';
@@ -70,8 +70,6 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
       fileEvents: [
         vscode.workspace.createFileSystemWatcher('**/*.tf'),
         vscode.workspace.createFileSystemWatcher('**/*.tfvars'),
-        vscode.workspace.createFileSystemWatcher('**/*.tfstack.hcl'),
-        vscode.workspace.createFileSystemWatcher('**/*.tfdeploy.hcl'),
       ],
     },
     outputChannel: outputChannel,

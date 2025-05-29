@@ -30,7 +30,7 @@ suite('code actions', () => {
 
     test('formats the document', async () => {
       const supported = [
-        new vscode.CodeAction('Format Document', vscode.CodeActionKind.Source.append('formatAll').append('terraform')),
+        new vscode.CodeAction('Format Document', vscode.CodeActionKind.Source.append('formatAll').append('opentofu')),
       ];
 
       // wait till the LS is ready to accept a code action request

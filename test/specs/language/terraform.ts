@@ -36,21 +36,4 @@ describe('Terraform language tests', () => {
   it('can detect correct language', async () => {
     expect(await statusBar.getCurrentLanguage()).toContain('Terraform');
   });
-
-  // it('can detect terraform version', async () => {
-  //   let item: WebdriverIO.Element | undefined;
-  //   await browser.waitUntil(
-  //     async () => {
-  //       const i = await statusBar.getItems();
-  //       // console.log(i);
-
-  //       item = await statusBar.getItem(
-  //         'Editor Language Status: 0.32.7, Terraform LS, next: 1.6.6, Terraform Installed, next: any, Terraform Required',
-  //       );
-  //     },
-  //     { timeout: 10000, timeoutMsg: 'Did not find a version' },
-  //   );
-
-  //   expect(item).toBeDefined();
-  // });
 });

@@ -5,11 +5,11 @@
 
 import * as vscode from 'vscode';
 
-import {ExecuteCommandParams, ExecuteCommandRequest, LanguageClient} from 'vscode-languageclient/node';
+import { ExecuteCommandParams, ExecuteCommandRequest, LanguageClient } from 'vscode-languageclient/node';
 
-import {Utils} from 'vscode-uri';
-import {clientSupportsCommand} from './../../utils/clientHelpers';
-import {getActiveTextEditor} from './../../utils/vscode';
+import { Utils } from 'vscode-uri';
+import { clientSupportsCommand } from './../../utils/clientHelpers';
+import { getActiveTextEditor } from './../../utils/vscode';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 export interface ModuleCaller {
@@ -173,7 +173,7 @@ async function tofuCommand(command: string, client: LanguageClient, useShell = f
 }
 
 async function execWorkspaceLSCommand<T>(command: string, moduleUri: string, client: LanguageClient): Promise<T> {
-  // record whether we use terraform.init or terraform.initcurrent vscode commands
+  // record whether we use tofu.init or tofu.initcurrent vscode commands
   // this is hacky, but better than propagating down another parameter just to handle
   // which init command we used
   if (command === 'tofu-ls.tofu.initCurrent') {

@@ -13,19 +13,19 @@ export class TofuCommands implements vscode.Disposable {
 
   constructor(private client: LanguageClient) {
     this.commands = [
-      vscode.commands.registerCommand('opentofu.init', async () => {
+      vscode.commands.registerCommand('tofu.init', async () => {
         await tofu.initAskUserCommand(this.client);
       }),
-      vscode.commands.registerCommand('opentofu.initCurrent', async () => {
+      vscode.commands.registerCommand('tofu.initCurrent', async () => {
         await tofu.initCurrentOpenFileCommand(this.client);
       }),
-      vscode.commands.registerCommand('opentofu.apply', async () => {
+      vscode.commands.registerCommand('tofu.apply', async () => {
         await tofu.command('apply', this.client, true);
       }),
-      vscode.commands.registerCommand('opentofu.plan', async () => {
+      vscode.commands.registerCommand('tofu.plan', async () => {
         await tofu.command('plan', this.client, true);
       }),
-      vscode.commands.registerCommand('opentofu.validate', async () => {
+      vscode.commands.registerCommand('tofu.validate', async () => {
         await tofu.command('validate', this.client);
       }),
     ];

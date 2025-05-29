@@ -174,20 +174,20 @@ Outdated:\t${info.outdated}
   }
 
   async getRuntimeInfo(): Promise<TerraformInfo> {
-    const terraformExe = 'tofu';
+    const tofuExe = 'tofuExe';
     const spawn = child_process.spawnSync;
 
-    // try to get version from a newer terraform binary
-    const resultJson = spawn(terraformExe, ['version', '-json']);
+    // try to get version from a newer tofu binary
+    const resultJson = spawn(tofuExe, ['version', '-json']);
     if (resultJson.error === undefined) {
       try {
         const response = resultJson.stdout.toString();
         const j = JSON.parse(response);
 
         return {
-          version: j.terraform_version,
+          version: j.tofu_version,
           platform: j.platform,
-          outdated: j.terraform_outdated,
+          outdated: j.tofu_outdated,
         };
       } catch {
         // fall through
@@ -195,7 +195,7 @@ Outdated:\t${info.outdated}
     }
 
     // try an older binary without the json flag
-    const result = spawn(terraformExe, ['version']);
+    const result = spawn(tofuExe, ['version']);
     if (result.error === undefined) {
       try {
         const response = result.stdout.toString() || result.stderr.toString();

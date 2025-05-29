@@ -26,7 +26,7 @@ suite('hover', () => {
       assert.equal(doc.languageId, 'opentofu', 'document language should be `opentofu`');
     });
 
-    test('returns docs for terraform block', async () => {
+    test('returns docs for opentofu block', async () => {
       await testHover(docUri, new vscode.Position(0, 1), [
         new vscode.Hover(
           new vscode.MarkdownString(

@@ -77,34 +77,6 @@
         "configuration": "./language-configuration.json"
       },
       {
-        "id": "terraform-stack",
-        "aliases": [
-          "Terraform Stack"
-        ],
-        "extensions": [
-          ".tfstack.hcl"
-        ],
-        "configuration": "./language-configuration.json",
-        "icon": {
-          "dark": "assets/icons/terraform_stacks.svg",
-          "light": "assets/icons/terraform_stacks.svg"
-        }
-      },
-      {
-        "id": "terraform-deploy",
-        "aliases": [
-          "Terraform Deployment"
-        ],
-        "extensions": [
-          ".tfdeploy.hcl"
-        ],
-        "configuration": "./language-configuration.json",
-        "icon": {
-          "dark": "assets/icons/terraform_stacks.svg",
-          "light": "assets/icons/terraform_stacks.svg"
-        }
-      },
-      {
         "id": "terraform-test",
         "aliases": [
           "Terraform Test"
@@ -149,16 +121,6 @@
         "language": "opentofu-vars",
         "scopeName": "source.hcl.terraform",
         "path": "./syntaxes/terraform.tmGrammar.json"
-      },
-      {
-        "language": "terraform-stack",
-        "scopeName": "source.hcl",
-        "path": "./syntaxes/hcl.tmGrammar.json"
-      },
-      {
-        "language": "terraform-deploy",
-        "scopeName": "source.hcl",
-        "path": "./syntaxes/hcl.tmGrammar.json"
       },
       {
         "language": "terraform-test",
@@ -503,20 +465,20 @@
         "title": "OpenTofu: Disable Language Server"
       },
       {
-        "command": "opentofu.init",
+        "command": "tofu.init",
         "title": "OpenTofu: init"
       },
       {
-        "command": "opentofu.initCurrent",
+        "command": "tofu.initCurrent",
         "title": "OpenTofu: init current folder",
         "icon": "$(cloud-download)"
       },
       {
-        "command": "opentofu.validate",
+        "command": "tofu.validate",
         "title": "OpenTofu: validate"
       },
       {
-        "command": "opentofu.plan",
+        "command": "tofu.plan",
         "title": "OpenTofu: plan"
       },
       {
@@ -551,19 +513,19 @@
           "when": "config.opentofu.languageServer.enable == true"
         },
         {
-          "command": "opentofu.init",
+          "command": "tofu.init",
           "when": "config.opentofu.languageServer.enable == true"
         },
         {
-          "command": "opentofu.initCurrent",
+          "command": "tofu.initCurrent",
           "when": "config.opentofu.languageServer.enable == true"
         },
         {
-          "command": "opentofu.validate",
+          "command": "tofu.validate",
           "when": "config.opentofu.languageServer.enable == true"
         },
         {
-          "command": "opentofu.plan",
+          "command": "tofu.plan",
           "when": "config.opentofu.languageServer.enable == true"
         },
         {
@@ -595,7 +557,7 @@
           "group": "navigation"
         },
         {
-          "command": "opentofu.initCurrent",
+          "command": "tofu.initCurrent",
           "when": "view == opentofu.providers",
           "group": "navigation"
         }
