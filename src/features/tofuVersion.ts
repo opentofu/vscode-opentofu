@@ -4,7 +4,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
 import * as vscode from 'vscode';
-import * as terraform from '../api/terraform/terraform';
+import * as tofu from '../api/opentofu/opentofu';
 import { ClientCapabilities, FeatureState, ServerCapabilities, StaticFeature } from 'vscode-languageclient';
 import { getActiveTextEditor } from '../utils/vscode';
 import { ExperimentalClientCapabilities } from './types';
@@ -14,10 +14,10 @@ import * as lsStatus from '../status/language';
 import * as versionStatus from '../status/installedVersion';
 import * as requiredVersionStatus from '../status/requiredVersion';
 
-export class TerraformVersionFeature implements StaticFeature {
+export class TofuVersionFeature implements StaticFeature {
   private disposables: vscode.Disposable[] = [];
 
-  private clientTerraformVersionCommandId = 'client.refreshTerraformVersion';
+  private clientTofuVersionCommandId = 'client.refreshTofuVersion';
 
   constructor(
     private client: LanguageClient,
@@ -35,16 +35,16 @@ export class TerraformVersionFeature implements StaticFeature {
 
   public fillClientCapabilities(capabilities: ClientCapabilities & ExperimentalClientCapabilities): void {
     capabilities.experimental = capabilities.experimental || {};
-    capabilities.experimental.refreshTerraformVersionCommandId = this.clientTerraformVersionCommandId;
+    capabilities.experimental.refreshTofuVersionCommandId = this.clientTofuVersionCommandId;
   }
 
   public async initialize(capabilities: ServerCapabilities): Promise<void> {
-    if (!capabilities.experimental?.refreshTerraformVersion) {
-      this.outputChannel.appendLine("Server doesn't support client.refreshTerraformVersion");
+    if (!capabilities.experimental?.refreshTofuVersion) {
+      this.outputChannel.appendLine("Server doesn't support client.refreshTofuVersion");
       return;
     }
 
-    const handler = this.client.onRequest(this.clientTerraformVersionCommandId, async () => {
+    const handler = this.client.onRequest(this.clientTofuVersionCommandId, async () => {
       const editor = getActiveTextEditor();
       if (editor === undefined) {
         return;
@@ -58,7 +58,7 @@ export class TerraformVersionFeature implements StaticFeature {
 
         lsStatus.setLanguageServerBusy();
 
-        const response = await terraform.terraformVersion(moduleDir.toString(), this.client);
+        const response = await tofu.tofuVersion(moduleDir.toString(), this.client);
         versionStatus.setVersion(response.discovered_version || 'unknown');
         requiredVersionStatus.setVersion(response.required_version || 'any');
 

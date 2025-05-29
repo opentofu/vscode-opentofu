@@ -3,30 +3,30 @@
 // Copyright (c) 2024 HashiCorp, Inc.
 // SPDX-License-Identifier: MPL-2.0
 
-import * as terraform from '../api/terraform/terraform';
+import * as tofu from '../api/opentofu/opentofu';
 import * as vscode from 'vscode';
 
 import { LanguageClient } from 'vscode-languageclient/node';
 
-export class TerraformCommands implements vscode.Disposable {
+export class TofuCommands implements vscode.Disposable {
   private commands: vscode.Disposable[];
 
   constructor(private client: LanguageClient) {
     this.commands = [
       vscode.commands.registerCommand('opentofu.init', async () => {
-        await terraform.initAskUserCommand(this.client);
+        await tofu.initAskUserCommand(this.client);
       }),
       vscode.commands.registerCommand('opentofu.initCurrent', async () => {
-        await terraform.initCurrentOpenFileCommand(this.client);
+        await tofu.initCurrentOpenFileCommand(this.client);
       }),
       vscode.commands.registerCommand('opentofu.apply', async () => {
-        await terraform.command('apply', this.client, true);
+        await tofu.command('apply', this.client, true);
       }),
       vscode.commands.registerCommand('opentofu.plan', async () => {
-        await terraform.command('plan', this.client, true);
+        await tofu.command('plan', this.client, true);
       }),
       vscode.commands.registerCommand('opentofu.validate', async () => {
-        await terraform.command('validate', this.client);
+        await tofu.command('validate', this.client);
       }),
     ];
   }

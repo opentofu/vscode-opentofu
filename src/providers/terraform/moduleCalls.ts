@@ -4,7 +4,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
 import * as path from 'path';
-import * as terraform from '../../api/terraform/terraform';
+import * as tofu from '../../api/opentofu/opentofu';
 import * as vscode from 'vscode';
 
 import { getActiveTextEditor, isTerraformFile } from '../../utils/vscode';
@@ -109,44 +109,44 @@ export class ModuleCallsDataProvider implements vscode.TreeDataProvider<ModuleCa
   async getModules(): Promise<ModuleCallItem[]> {
     const activeEditor = getActiveTextEditor();
 
-    await vscode.commands.executeCommand('setContext', 'terraform.modules.documentOpened', true);
-    await vscode.commands.executeCommand('setContext', 'terraform.modules.documentIsTerraform', true);
-    await vscode.commands.executeCommand('setContext', 'terraform.modules.lspConnected', true);
-    await vscode.commands.executeCommand('setContext', 'terraform.modules.noResponse', false);
-    await vscode.commands.executeCommand('setContext', 'terraform.modules.noModules', false);
+    await vscode.commands.executeCommand('setContext', 'tofu.modules.documentOpened', true);
+    await vscode.commands.executeCommand('setContext', 'tofu.modules.documentIsTerraform', true);
+    await vscode.commands.executeCommand('setContext', 'tofu.modules.lspConnected', true);
+    await vscode.commands.executeCommand('setContext', 'tofu.modules.noResponse', false);
+    await vscode.commands.executeCommand('setContext', 'tofu.modules.noModules', false);
 
     if (activeEditor?.document === undefined) {
       // there is no open document
-      await vscode.commands.executeCommand('setContext', 'terraform.modules.documentOpened', false);
+      await vscode.commands.executeCommand('setContext', 'tofu.modules.documentOpened', false);
       return [];
     }
 
     if (!isTerraformFile(activeEditor.document)) {
-      // the open file is not a terraform file
-      await vscode.commands.executeCommand('setContext', 'terraform.modules.documentIsTerraform', false);
+      // the open file is not a tofu file
+      await vscode.commands.executeCommand('setContext', 'tofu.modules.documentIsTerraform', false);
       return [];
     }
 
     if (this.client === undefined) {
-      // connection to terraform-ls failed
-      await vscode.commands.executeCommand('setContext', 'terraform.modules.lspConnected', false);
+      // connection to tofu-ls failed
+      await vscode.commands.executeCommand('setContext', 'tofu.modules.lspConnected', false);
       return [];
     }
 
     const editor = activeEditor.document.uri;
     const documentURI = Utils.dirname(editor);
 
-    let response: terraform.ModuleCallsResponse;
+    let response: tofu.ModuleCallsResponse;
     try {
-      response = await terraform.moduleCalls(documentURI.toString(), this.client);
+      response = await tofu.moduleCalls(documentURI.toString(), this.client);
       if (response === null) {
-        // no response from terraform-ls
-        await vscode.commands.executeCommand('setContext', 'terraform.modules.noResponse', true);
+        // no response from tofu-ls
+        await vscode.commands.executeCommand('setContext', 'tofu.modules.noResponse', true);
         return [];
       }
     } catch {
-      // error from terraform-ls
-      await vscode.commands.executeCommand('setContext', 'terraform.modules.noResponse', true);
+      // error from tofu-ls
+      await vscode.commands.executeCommand('setContext', 'tofu.modules.noResponse', true);
       return [];
     }
 
@@ -164,13 +164,13 @@ export class ModuleCallsDataProvider implements vscode.TreeDataProvider<ModuleCa
       });
 
       if (list.length === 0) {
-        await vscode.commands.executeCommand('setContext', 'terraform.modules.noModules', true);
+        await vscode.commands.executeCommand('setContext', 'tofu.modules.noModules', true);
       }
 
       return list;
     } catch {
       // error mapping response
-      await vscode.commands.executeCommand('setContext', 'terraform.modules.noResponse', true);
+      await vscode.commands.executeCommand('setContext', 'tofu.modules.noResponse', true);
       return [];
     }
   }
@@ -182,7 +182,7 @@ export class ModuleCallsDataProvider implements vscode.TreeDataProvider<ModuleCa
     sourceType: string | undefined,
     docsLink: string | undefined,
     terraformIcon: string,
-    dependents: terraform.ModuleCall[],
+    dependents: tofu.ModuleCall[],
   ): ModuleCallItem {
     let deps: ModuleCallItem[] = [];
     if (dependents.length !== 0) {

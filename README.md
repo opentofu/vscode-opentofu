@@ -232,12 +232,12 @@ Display reference counts above top level blocks and attributes
 To enable automatic formatting, it is recommended that the following be added to the extension settings for the OpenTofu extension:
 
 ```json
-"[terraform]": {
+"[opentofu]": {
   "editor.defaultFormatter": "opentofu.opentofu",
   "editor.formatOnSave": true,
   "editor.formatOnSaveMode": "file"
 },
-"[terraform-vars]": {
+"[opentofu-vars]": {
   "editor.defaultFormatter": "opentofu.opentofu",
   "editor.formatOnSave": true,
   "editor.formatOnSaveMode": "file"
@@ -252,14 +252,14 @@ If you want to use `editor.codeActionsOnSave` with `editor.formatOnSave` to auto
 
 ```json
 "editor.formatOnSave": true,
-"[terraform]": {
+"[opentofu]": {
   "editor.defaultFormatter": "opentofu.opentofu",
   "editor.formatOnSave": false,
   "editor.codeActionsOnSave": {
     "source.formatAll.opentofu": true
   },
 },
-"[terraform-vars]": {
+"[opentofu-vars]": {
   "editor.defaultFormatter": "opentofu.opentofu",
   "editor.formatOnSave": false,
   "editor.codeActionsOnSave": {
