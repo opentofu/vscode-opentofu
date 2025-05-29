@@ -58,7 +58,7 @@ body:
     attributes:
       label: OpenTofu Version
       description: |
-        Output of `terraform version`
+        Output of `tofu version`
       placeholder: OpenTofu v1.0.0 on darwin_arm64
     validations:
       required: true
