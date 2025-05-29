@@ -12,7 +12,7 @@
     "workspace"
   ],
   "engines": {
-    "npm": "~10.X",
+    "npm": "~10.X || ~11.X",
     "node": "~20.X",
     "vscode": "^1.88.0"
   },
