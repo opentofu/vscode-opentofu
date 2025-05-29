@@ -7,7 +7,7 @@ import * as vscode from 'vscode';
 
 import { config, getScope } from '../utils/vscode';
 
-export class TerraformLSCommands implements vscode.Disposable {
+export class TofuLSCommands implements vscode.Disposable {
   private commands: vscode.Disposable[];
 
   constructor() {

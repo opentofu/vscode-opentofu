@@ -1,6 +1,6 @@
 # OpenTofu Extension for Visual Studio Code
 
-[OpenTofu Extension for Visual Studio Code (VS Code)](https://marketplace.visualstudio.com/items?itemName=opentofu.opentofu) with the [Terraform Language Server](https://github.com/hashicorp/terraform-ls) adds editing features for [OpenTofu](https://opentofu.org/) files such as syntax highlighting, IntelliSense, code navigation, code formatting, module explorer and much more!
+[OpenTofu Extension for Visual Studio Code (VS Code)](https://marketplace.visualstudio.com/items?itemName=opentofu.opentofu) with the [OpenTofu Language Server](https://github.com/opentofu/tofu-ls) adds editing features for [OpenTofu](https://opentofu.org/) files such as syntax highlighting, IntelliSense, code navigation, code formatting, module explorer and much more!
 
 ## Quick Start
 
@@ -61,7 +61,7 @@ HCL syntax is checked for e.g. missing control characters like `}`, `"` or other
 
 ![](docs/validation-rule-hcl.png)
 
-Enhanced validation of selected OpenTofu language constructs in both `*.tf` and `*.tfvars` files based on detected OpenTofu version and provider versions is also provided. This can highlight deprecations, missing required attributes or blocks, references to undeclared variables and more, [as documented](https://github.com/hashicorp/terraform-ls/blob/main/docs/validation.md#enhanced-validation).
+Enhanced validation of selected OpenTofu language constructs in both `*.tf` and `*.tfvars` files based on detected OpenTofu version and provider versions is also provided. This can highlight deprecations, missing required attributes or blocks, references to undeclared variables and more, [as documented](https://github.com/opentofu/tofu-ls/blob/main/docs/validation.md#enhanced-validation).
 
 ![](docs/validation-rule-missing-attribute.png)
 
@@ -138,7 +138,7 @@ The extension provides access to several OpenTofu commands through the Command P
 
 ## Requirements
 
-The OpenTofu VS Code extension bundles the [Terraform Language Server](https://github.com/hashicorp/terraform-ls) and is a self-contained install.
+The OpenTofu VS Code extension bundles the [OpenTofu Language Server](https://github.com/opentofu/tofu-ls) and is a self-contained install.
 
 The extension does require the following to be installed before use:
 
@@ -164,7 +164,7 @@ Syntax highlighting targets OpenTofu v1.0 and greater.
 
 It is a common pattern to have separate folders containing related OpenTofu configuration that are not contained under one root folder. For example, you have a main OpenTofu folder containing the configuration for a single application and several module folders containing encapsulated code for configuring different parts of component pieces. You could open each folder in a separate VS Code window, and bounce between each window to author your changes.
 
-A better approach is to use [VS Code Workspaces](https://code.visualstudio.com/docs/editor/workspaces). Using our example above, open the main OpenTofu folder first, then use Add Folder to workspace to add the dependent module folders. A single VS Code window is used and all OpenTofu files are available to author your changes. This uses a single terraform-ls process that has an understanding of your entire project, allowing you to use features like `Go to Symbol` and `Reference counts` across your project.
+A better approach is to use [VS Code Workspaces](https://code.visualstudio.com/docs/editor/workspaces). Using our example above, open the main OpenTofu folder first, then use Add Folder to workspace to add the dependent module folders. A single VS Code window is used and all OpenTofu files are available to author your changes. This uses a single tofu-ls process that has an understanding of your entire project, allowing you to use features like `Go to Symbol` and `Reference counts` across your project.
 
 ### Single file support
 
@@ -302,7 +302,7 @@ If you want to automatically search root modules in your workspace and exclude s
 ]
 ```
 
-If you want to automatically ignore certain directories when terraform-ls indexes files, add the folder names to this setting:
+If you want to automatically ignore certain directories when tofu-ls indexes files, add the folder names to this setting:
 
 ```json
  "opentofu.languageServer.ignoreDirectoryNames": [
@@ -313,7 +313,7 @@ If you want to automatically ignore certain directories when terraform-ls indexe
 
 ### OpenTofu command options
 
-You can configure the path to the tofu binary used by terraform-ls to perform operations inside the editor by configuring this setting:
+You can configure the path to the tofu binary used by tofu-ls to perform operations inside the editor by configuring this setting:
 
 ```json
 "opentofu.languageServer.path": "C:/some/folder/path"
@@ -348,7 +348,7 @@ Supports variables (e.g. timestamp, pid, ppid) via Go template syntax `{{varname
 
 ### Generate a bug report
 
-Experience a problem? You can have VS Code open a Github issue in our repo with all the information filled out for you. Open the Command Palette and invoke `OpenTofu: Generate Bug Report`. This will inspect the VS Code version, the OpenTofu extension version, the terraform-ls version and the list of installed extensions and open a browser window with GitHub loaded. You can then inspect the information provided, edit if desired, and submit the issue.
+Experience a problem? You can have VS Code open a Github issue in our repo with all the information filled out for you. Open the Command Palette and invoke `OpenTofu: Generate Bug Report`. This will inspect the VS Code version, the OpenTofu extension version, the tofu-ls version and the list of installed extensions and open a browser window with GitHub loaded. You can then inspect the information provided, edit if desired, and submit the issue.
 
 ### Reload the extension
 

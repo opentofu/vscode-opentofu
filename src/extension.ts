@@ -30,7 +30,7 @@ import { ModuleProvidersFeature } from './features/moduleProviders';
 import { ServerPath } from './utils/serverPath';
 import { ShowReferencesFeature } from './features/showReferences';
 import { TofuCommands } from './commands/tofu.js';
-import { TerraformLSCommands } from './commands/tofuls.js';
+import { TofuLSCommands } from './commands/tofuls.js';
 import { TofuVersionFeature } from './features/tofuVersion.js';
 import { getInitializationOptions } from './settings';
 import { getServerOptions } from './utils/clientHelpers';
@@ -50,8 +50,8 @@ let crashCount = 0;
 export async function activate(context: vscode.ExtensionContext): Promise<void> {
   const manifest = context.extension.packageJSON;
 
-  // always register commands needed to control terraform-ls
-  context.subscriptions.push(new TerraformLSCommands());
+  // always register commands needed to control tofu-ls
+  context.subscriptions.push(new TofuLSCommands());
 
   if (config('opentofu').get<boolean>('languageServer.enable') === false) {
     return;

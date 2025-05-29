@@ -6,11 +6,11 @@
 blank_issues_enabled: true
 contact_links:
   - name: Terraform Language Features / Bugs
-    url: https://github.com/hashicorp/terraform-ls/issues
+    url: https://github.com/opentofu/tofu-ls/issues
     about: >-
-      Most of the language features of the VS Code extension are supplied by the Terraform
+      Most of the language features of the VS Code extension are supplied by the OpenTofu
       Language Server. Issues with language features in many cases may need to be filed on
       that repository.
   - name: Discussion and Questions
-    url: https://github.com/gamunu/vscode-opentofu/discussions
+    url: https://github.com/opentofu/vscode-opentofu/discussions
     about: Please use the OpenTofu extension Github discussions for questions and discussions.
