@@ -1,6 +1,6 @@
 # Development
 
-We are an open source project on GitHub and would enjoy your contributions! Please [open a new issue](https://github.com/gamunu/terraform-opentofu/issues) before working on a PR that requires significant effort. This will allow us to make sure the work is in line with the project's goals.
+We are an open source project on GitHub and would enjoy your contributions! Please [open a new issue](https://github.com/opentofu/vscode-opentofu/issues) before working on a PR that requires significant effort. This will allow us to make sure the work is in line with the project's goals.
 
 ## Building
 
@@ -15,7 +15,7 @@ The extension makes use of the [VSCode Language Server](https://github.com/Micro
 ### Getting the code
 
 ```
-git clone https://github.com/gamunu/vscode-opentofu
+git clone https://github.com/opentofu/vscode-opentofu
 ```
 
 ### Dependencies

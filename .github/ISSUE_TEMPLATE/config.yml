@@ -12,5 +12,5 @@ contact_links:
       Language Server. Issues with language features in many cases may need to be filed on
       that repository.
   - name: Discussion and Questions
-    url: https://github.com/gamunu/vscode-opentofu/discussions
+    url: https://github.com/opentofu/vscode-opentofu/discussions
     about: Please use the OpenTofu extension Github discussions for questions and discussions.

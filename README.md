@@ -341,9 +341,9 @@ Supports variables (e.g. timestamp, pid, ppid) via Go template syntax `{{varname
 
 ## Troubleshooting
 
-- If you come across a problem with the extension, please file an [issue](https://github.com/gamunu/vscode-opentofu/issues/new/choose).
+- If you come across a problem with the extension, please file an [issue](https://github.com/opentofu/vscode-opentofu/issues/new/choose).
 - If someone has already filed an issue that encompasses your feedback, please leave a 👍/👎 reaction on the issue
-- Contributions are always welcome! Please see our [contributing guide](https://github.com/gamunu/vscode-opentofu/issues/new?assignees=&labels=enhancement&template=feature_request.md) for more details
+- Contributions are always welcome! Please see our [contributing guide](https://github.com/opentofu/vscode-opentofu/issues/new?assignees=&labels=enhancement&template=feature_request.md) for more details
 - If you're interested in the development of the extension, you can read about our [development process](DEVELOPMENT.md)
 
 ### Generate a bug report
@@ -364,7 +364,7 @@ If you wish to install a specific version of the extension, you can choose 'Inst
 
 ## Contributing
 
-We are an open source project on GitHub and would enjoy your contributions! Consult our [development guide](DEVELOPMENT.md) for steps on how to get started. Please [open a new issue](https://github.com/gamunu/terraform-vscode/issues) before working on a PR that requires significant effort. This will allow us to make sure the work is in line with the project's goals.
+We are an open source project on GitHub and would enjoy your contributions! Consult our [development guide](DEVELOPMENT.md) for steps on how to get started. Please [open a new issue](https://github.com/opentofu/vscode-opentofu/issues) before working on a PR that requires significant effort. This will allow us to make sure the work is in line with the project's goals.
 
 ## Credits
 

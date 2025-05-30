@@ -22,9 +22,9 @@
   "syntax": {
     "version": "0.7.0"
   },
-  "qna": "https://github.com/gamunu/vscode-opentofu/discussions/categories/q-a",
+  "qna": "https://github.com/opentofu/vscode-opentofu/discussions/categories/q-a",
   "bugs": {
-    "url": "https://github.com/gamunu/vscode-opentofu/issues",
+    "url": "https://github.com/opentofu/vscode-opentofu/issues",
     "email": "support@fastcode.io"
   },
   "categories": [
@@ -45,7 +45,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gamunu/vscode-opentofu.git"
+    "url": "https://github.com/opentofu/vscode-opentofu.git"
   },
   "activationEvents": [
     "onView:opentofu-modules",

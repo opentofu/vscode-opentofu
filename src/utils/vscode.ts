@@ -4,6 +4,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
 import * as vscode from 'vscode';
+
 import { InitializeError, ResponseError } from 'vscode-languageclient';
 
 export function config(section: string, scope?: vscode.ConfigurationScope): vscode.WorkspaceConfiguration {
@@ -118,7 +119,7 @@ export async function handleLanguageClientStartError(error: unknown, ctx: vscode
       case 'More Info':
         await vscode.commands.executeCommand(
           'vscode.open',
-          vscode.Uri.parse('https://github.com/gamunu/vscode-opentofu/blob/main/README.md#remote-extension-support'),
+          vscode.Uri.parse('https://github.com/opentofu/vscode-opentofu/blob/main/README.md#remote-extension-support'),
         );
     }
   } else {

@@ -117,7 +117,7 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
             case 'More Info':
               await vscode.commands.executeCommand(
                 'vscode.open',
-                vscode.Uri.parse('https://github.com/gamunu/vscode-opentofu#troubleshooting'),
+                vscode.Uri.parse('https://github.com/opentofu/vscode-opentofu#troubleshooting'),
               );
               break;
           }
