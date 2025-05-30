@@ -65,7 +65,8 @@
           "hcl"
         ],
         "extensions": [
-          ".tf"
+          ".tf",
+          ".tofu"
         ],
         "configuration": "./language-configuration.json"
       },
@@ -107,10 +108,11 @@
       {
         "id": "terraform-test",
         "aliases": [
-          "Terraform Test"
+          "OpenTofu Test"
         ],
         "extensions": [
-          ".tftest.hcl"
+          ".tftest.hcl",
+          ".tofutest.hcl"
         ],
         "configuration": "./language-configuration.json",
         "icon": {
