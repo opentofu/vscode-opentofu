@@ -32,7 +32,7 @@ suite('hover', () => {
           new vscode.MarkdownString(
             '**terraform** _Block_\n\nTerraform block used to configure some high-level behaviors of Terraform',
           ),
-          new vscode.Range(new vscode.Position(14, 12), new vscode.Position(14, 20)),
+          new vscode.Range(new vscode.Position(0, 0), new vscode.Position(0, 9)),
         ),
       ]);
     });
