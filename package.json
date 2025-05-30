@@ -86,8 +86,8 @@
         ],
         "configuration": "./language-configuration.json",
         "icon": {
-          "dark": "assets/icons/terraform_stacks.svg",
-          "light": "assets/icons/terraform_stacks.svg"
+          "dark": "assets/icons/opentofu.svg",
+          "light": "assets/icons/opentofu.svg"
         }
       },
       {
@@ -100,8 +100,8 @@
         ],
         "configuration": "./language-configuration.json",
         "icon": {
-          "dark": "assets/icons/terraform_stacks.svg",
-          "light": "assets/icons/terraform_stacks.svg"
+          "dark": "assets/icons/opentofu.svg",
+          "light": "assets/icons/opentofu.svg"
         }
       },
       {
@@ -114,8 +114,8 @@
         ],
         "configuration": "./language-configuration.json",
         "icon": {
-          "dark": "assets/icons/terraform_stacks.svg",
-          "light": "assets/icons/terraform_stacks.svg"
+          "dark": "assets/icons/opentofu.svg",
+          "light": "assets/icons/opentofu.svg"
         }
       },
       {
@@ -128,8 +128,8 @@
         ],
         "configuration": "./language-configuration.json",
         "icon": {
-          "dark": "assets/icons/terraform_stacks.svg",
-          "light": "assets/icons/terraform_stacks.svg"
+          "dark": "assets/icons/opentofu.svg",
+          "light": "assets/icons/opentofu.svg"
         }
       },
       {
