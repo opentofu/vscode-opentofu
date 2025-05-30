@@ -43,7 +43,7 @@ function getArch(arch: string) {
   // Linux    | linux_arm64   | linux_arm64        | ✅
   // Windows  | windows_x86_64 | win32_x64          | ✅
   // Windows  | windows_arm64 | win32_arm64        | ✅
-  if (arch === 'x64') {
+  if (['x64', 'x86'].includes(arch)) {
     return 'x86_64';
   }
 
