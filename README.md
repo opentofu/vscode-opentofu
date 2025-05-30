@@ -143,7 +143,7 @@ The OpenTofu VS Code extension bundles the [Terraform Language Server](https://g
 The extension does require the following to be installed before use:
 
 - VS Code v1.86 or greater
-- OpenTofu v or greater
+- OpenTofu v1.6 or greater
 
 ## Platform Support
 
