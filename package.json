@@ -67,7 +67,11 @@
         "extensions": [
           ".tf"
         ],
-        "configuration": "./language-configuration.json"
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "dark": "assets/icons/opentofu.svg",
+          "light": "assets/icons/opentofu.svg"
+        }
       },
       {
         "id": "opentofu-vars",
