@@ -1,7 +1,7 @@
 {
   "icon": "assets/icons/opentofu_logo_universal.png",
   "name": "vscode-opentofu",
-  "displayName": "OpenTofu",
+  "displayName": "VSCode - OpenTofu",
   "description": "Syntax highlighting and autocompletion for OpenTofu",
   "version": "0.2.1",
   "publisher": "opentofu",
