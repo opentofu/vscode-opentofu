@@ -370,6 +370,7 @@ We are an open source project on GitHub and would enjoy your contributions! Cons
 
 - [Mikael Olenfalk](https://github.com/mauve) - creating the [vscode-terraform](https://github.com/mauve/vscode-terraform) extension, which was used as a starting point and inspiration for this extension.
 - [Hashicorp Terraform](https://github.com/mauve) - creating the [vscode-terraform](https://github.com/hashicorp/vscode-terraform) extension, which was used as a starting point and inspiration for this extension.
+- [Gamunu Balagalla](http://github.com/gamunu) for creating the first OpenTofu's VSCode extension. The [original project](https://github.com/gamunu/vscode-opentofu) was the foundation for this project and the fork was derived from it.
 
 # Trademarks
 
