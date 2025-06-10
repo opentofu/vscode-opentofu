@@ -82,34 +82,6 @@
         "configuration": "./language-configuration.json"
       },
       {
-        "id": "terraform-stack",
-        "aliases": [
-          "Terraform Stack"
-        ],
-        "extensions": [
-          ".tfstack.hcl"
-        ],
-        "configuration": "./language-configuration.json",
-        "icon": {
-          "dark": "assets/icons/opentofu.svg",
-          "light": "assets/icons/opentofu.svg"
-        }
-      },
-      {
-        "id": "terraform-deploy",
-        "aliases": [
-          "Terraform Deployment"
-        ],
-        "extensions": [
-          ".tfdeploy.hcl"
-        ],
-        "configuration": "./language-configuration.json",
-        "icon": {
-          "dark": "assets/icons/opentofu.svg",
-          "light": "assets/icons/opentofu.svg"
-        }
-      },
-      {
         "id": "terraform-test",
         "aliases": [
           "OpenTofu Test"
@@ -155,16 +127,6 @@
         "language": "opentofu-vars",
         "scopeName": "source.hcl.terraform",
         "path": "./syntaxes/terraform.tmGrammar.json"
-      },
-      {
-        "language": "terraform-stack",
-        "scopeName": "source.hcl",
-        "path": "./syntaxes/hcl.tmGrammar.json"
-      },
-      {
-        "language": "terraform-deploy",
-        "scopeName": "source.hcl",
-        "path": "./syntaxes/hcl.tmGrammar.json"
       },
       {
         "language": "terraform-test",
