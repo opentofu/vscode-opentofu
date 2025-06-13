@@ -35,7 +35,7 @@ IntelliSense is a general term for a variety of code editing features including:
 
 For OpenTofu constructs like resource and data, labels, blocks and attributes are auto completed both at the root of the document and inside other blocks. This also works for OpenTofu modules that are installed in the workspace, attributes and other constructs are autocompleted.
 
-> **Note:** If there are syntax errors present in the document upon opening, intellisense may not provide all completions. Please fix the errors and reload the document and intellisense will return. See [hcl-lang#57](https://github.com/opentofu/hcl-lang/issues/57) for more information.
+> **Note:** If there are syntax errors present in the document upon opening, intellisense may not provide all completions. Please fix the errors and reload the document and intellisense will return. See [hcl-lang#57](https://github.com/hashicorp/hcl-lang/issues/57) for more information.
 
 Invoking intellisense is performed through the [keyboard combination](https://code.visualstudio.com/docs/getstarted/keybindings) for your platform and the results depend on where the cursor is placed.
 
@@ -335,7 +335,7 @@ Supports variables (e.g. timestamp, pid, ppid) via Go template syntax `{{varname
 
 ## Known Issues
 
-- If there are syntax errors present in the document upon opening, intellisense may not provide all completions. Run `tofu: validate` and fix validation errors, then reload the document and intellisense will work again. Potential solutions for this are being investigated in See [hcl-lang#57](https://github.com/opentofu/hcl-lang/issues/57) for more information.
+- If there are syntax errors present in the document upon opening, intellisense may not provide all completions. Run `tofu: validate` and fix validation errors, then reload the document and intellisense will work again. Potential solutions for this are being investigated in See [hcl-lang#57](https://github.com/hashicorp/hcl-lang/issues/57) for more information.
 - Completion inside incomplete blocks, such as `resource "here` (without the closing quote and braces) is not supported. You can complete the 1st level blocks though and that will automatically trigger subsequent completion for e.g. resource types. See [tofu-ls#57](https://github.com/opentofu/tofu-ls/issues/57) for more information.
 - A number of different folder configurations (specifically when your root module is not a parent to any submodules) are not yet supported. More information available in ([tofu-ls#32](https://github.com/opentofu/tofu-ls/issues/32#issuecomment-649707345))
 
