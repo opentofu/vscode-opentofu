@@ -1,7 +1,7 @@
 {
   "icon": "assets/icons/opentofu_logo_universal.png",
-  "name": "opentofu",
-  "displayName": "OpenTofu",
+  "name": "vscode-opentofu",
+  "displayName": "VSCode - OpenTofu",
   "description": "Syntax highlighting and autocompletion for OpenTofu",
   "version": "0.2.1",
   "publisher": "opentofu",
@@ -17,14 +17,14 @@
     "vscode": "^1.88.0"
   },
   "langServer": {
-    "version": "0.0.1-alpha9"
+    "version": "0.0.3"
   },
   "syntax": {
     "version": "0.7.0"
   },
-  "qna": "https://github.com/gamunu/vscode-opentofu/discussions/categories/q-a",
+  "qna": "https://github.com/opentofu/vscode-opentofu/discussions/categories/q-a",
   "bugs": {
-    "url": "https://github.com/gamunu/vscode-opentofu/issues",
+    "url": "https://github.com/opentofu/vscode-opentofu/issues",
     "email": "support@fastcode.io"
   },
   "categories": [
@@ -45,7 +45,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gamunu/vscode-opentofu.git"
+    "url": "https://github.com/opentofu/vscode-opentofu.git"
   },
   "activationEvents": [
     "onView:opentofu-modules",
@@ -65,9 +65,14 @@
           "hcl"
         ],
         "extensions": [
-          ".tf"
+          ".tf",
+          ".tofu"
         ],
-        "configuration": "./language-configuration.json"
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "dark": "assets/icons/opentofu.svg",
+          "light": "assets/icons/opentofu.svg"
+        }
       },
       {
         "id": "opentofu-vars",
@@ -79,15 +84,16 @@
       {
         "id": "terraform-test",
         "aliases": [
-          "Terraform Test"
+          "OpenTofu Test"
         ],
         "extensions": [
-          ".tftest.hcl"
+          ".tftest.hcl",
+          ".tofutest.hcl"
         ],
         "configuration": "./language-configuration.json",
         "icon": {
-          "dark": "assets/icons/terraform_stacks.svg",
-          "light": "assets/icons/terraform_stacks.svg"
+          "dark": "assets/icons/opentofu.svg",
+          "light": "assets/icons/opentofu.svg"
         }
       },
       {
@@ -100,8 +106,8 @@
         ],
         "configuration": "./language-configuration.json",
         "icon": {
-          "dark": "assets/icons/terraform_stacks.svg",
-          "light": "assets/icons/terraform_stacks.svg"
+          "dark": "assets/icons/opentofu.svg",
+          "light": "assets/icons/opentofu.svg"
         }
       },
       {

@@ -82,7 +82,19 @@ export async function testHover(docUri: vscode.Uri, position: vscode.Position, e
   assert.equal(actualhover.length, expectedCompletionList.length);
   expectedCompletionList.forEach((expectedItem, i) => {
     const actualItem = actualhover[i];
-    assert.deepStrictEqual(actualItem.contents, expectedItem.contents);
+
+    // deepStrictEqual is not working as expected, that's why we
+    // are using a for loop and then checking the content
+    expectedItem.contents.forEach((expectedContent, j) => {
+      const actualItemContent = actualItem.contents[j];
+      assert.equal(
+        (expectedContent as vscode.MarkdownString).value,
+        (actualItemContent as vscode.MarkdownString).value,
+      );
+    });
+
+    assert.deepStrictEqual(actualItem.range!.start, expectedItem.range!.start);
+    assert.deepStrictEqual(actualItem.range!.end, expectedItem.range!.end);
   });
 }
 

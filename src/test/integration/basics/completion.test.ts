@@ -166,6 +166,8 @@ suite('completion', () => {
 
     test('simple variable completion', async () => {
       const expected = [
+        new vscode.CompletionItem('aws_active_regions', vscode.CompletionItemKind.Property),
+        new vscode.CompletionItem('aws_disabled_regions', vscode.CompletionItemKind.Property),
         new vscode.CompletionItem('credentials_file', vscode.CompletionItemKind.Property),
         new vscode.CompletionItem('project', vscode.CompletionItemKind.Property),
         new vscode.CompletionItem('region', vscode.CompletionItemKind.Property),

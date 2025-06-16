@@ -143,20 +143,20 @@ The OpenTofu VS Code extension bundles the [OpenTofu Language Server](https://gi
 The extension does require the following to be installed before use:
 
 - VS Code v1.86 or greater
-- OpenTofu v1.0 or greater
+- OpenTofu v1.6 or greater
 
 ## Platform Support
 
-The extension should work anywhere VS Code itself and OpenTofu 1.0 or higher is supported. Our test matrix includes the following:
+The extension should work anywhere VS Code itself and OpenTofu 1.6 or higher is supported. Our test matrix includes the following:
 
-- Windows Server 2022 with OpenTofu v1.0
-- macOS 12 with OpenTofu v1.0
-- macOS 11 with OpenTofu v1.0
-- Ubuntu 22.04 with OpenTofu v1.0
+- Windows Server 2022 with OpenTofu v1.6
+- macOS 12 with OpenTofu v1.6
+- macOS 11 with OpenTofu v1.6
+- Ubuntu 22.04 with OpenTofu v1.6
 
-Intellisense, error checking and other language features are supported for OpenTofu v1.0 and greater.
+Intellisense, error checking and other language features are supported for OpenTofu v1.6 and greater.
 
-Syntax highlighting targets OpenTofu v1.0 and greater.
+Syntax highlighting targets OpenTofu v1.6 and greater.
 
 ## Usage
 
@@ -336,14 +336,14 @@ Supports variables (e.g. timestamp, pid, ppid) via Go template syntax `{{varname
 ## Known Issues
 
 - If there are syntax errors present in the document upon opening, intellisense may not provide all completions. Run `tofu: validate` and fix validation errors, then reload the document and intellisense will work again. Potential solutions for this are being investigated in See [hcl-lang#57](https://github.com/hashicorp/hcl-lang/issues/57) for more information.
-- Completion inside incomplete blocks, such as `resource "here` (without the closing quote and braces) is not supported. You can complete the 1st level blocks though and that will automatically trigger subsequent completion for e.g. resource types. See [terraform-ls#57](https://github.com/hashicorp/terraform-ls/issues/57) for more information.
-- A number of different folder configurations (specifically when your root module is not a parent to any submodules) are not yet supported. More information available in ([terraform-ls#32](https://github.com/hashicorp/terraform-ls/issues/32#issuecomment-649707345))
+- Completion inside incomplete blocks, such as `resource "here` (without the closing quote and braces) is not supported. You can complete the 1st level blocks though and that will automatically trigger subsequent completion for e.g. resource types. See [tofu-ls#57](https://github.com/opentofu/tofu-ls/issues/57) for more information.
+- A number of different folder configurations (specifically when your root module is not a parent to any submodules) are not yet supported. More information available in ([tofu-ls#32](https://github.com/opentofu/tofu-ls/issues/32#issuecomment-649707345))
 
 ## Troubleshooting
 
-- If you come across a problem with the extension, please file an [issue](https://github.com/gamunu/vscode-opentofu/issues/new/choose).
+- If you come across a problem with the extension, please file an [issue](https://github.com/opentofu/vscode-opentofu/issues/new/choose).
 - If someone has already filed an issue that encompasses your feedback, please leave a 👍/👎 reaction on the issue
-- Contributions are always welcome! Please see our [contributing guide](https://github.com/gamunu/vscode-opentofu/issues/new?assignees=&labels=enhancement&template=feature_request.md) for more details
+- Contributions are always welcome! Please see our [contributing guide](https://github.com/opentofu/vscode-opentofu/issues/new?assignees=&labels=enhancement&template=feature_request.md) for more details
 - If you're interested in the development of the extension, you can read about our [development process](DEVELOPMENT.md)
 
 ### Generate a bug report
@@ -364,9 +364,17 @@ If you wish to install a specific version of the extension, you can choose 'Inst
 
 ## Contributing
 
-We are an open source project on GitHub and would enjoy your contributions! Consult our [development guide](DEVELOPMENT.md) for steps on how to get started. Please [open a new issue](https://github.com/gamunu/terraform-vscode/issues) before working on a PR that requires significant effort. This will allow us to make sure the work is in line with the project's goals.
+We are an open source project on GitHub and would enjoy your contributions! Consult our [development guide](DEVELOPMENT.md) for steps on how to get started. Please [open a new issue](https://github.com/opentofu/vscode-opentofu/issues) before working on a PR that requires significant effort. This will allow us to make sure the work is in line with the project's goals.
 
 ## Credits
 
 - [Mikael Olenfalk](https://github.com/mauve) - creating the [vscode-terraform](https://github.com/mauve/vscode-terraform) extension, which was used as a starting point and inspiration for this extension.
-- [Hashicorp Terraform](https://github.com/mauve) - creating the [vscode-terraform](https://github.com/hashicorp/vscode-terraform) extension, which was used as a starting point and inspiration for this extension.
+- [Hashicorp](https://github.com/hashicorp) - creating the [vscode-terraform](https://github.com/hashicorp/vscode-terraform) extension, which was used as a starting point and inspiration for this extension.
+- [Gamunu Balagalla](http://github.com/gamunu) for creating the first OpenTofu's VSCode extension. The [original project](https://github.com/gamunu/vscode-opentofu) was the foundation for this project and the fork was derived from it.
+
+# Trademarks
+
+This project mentions the following registered trademarks:
+
+- The name **Terraform** (registered trademark of HashiCorp) is used in this project for informational purposes only.
+- This project does not claim any affiliation with or endorsement by the owners of the mentioned trademarks.
