@@ -13,7 +13,7 @@ The way `vscode-test-cli` currently works is that it expects a single workspace 
 
 To add new test cases for existing test suites (aka tests sharing the same fixtures aka the same workspace), you can just add more `*.test.ts` files alongside the existing ones.
 
-To add a new test suite (which brings its own workspace), add a new directory within `src/test/integration` that itself contains a directory named `workspace` which in most cases contains the Terraform config that should be used in tests.
+To add a new test suite (which brings its own workspace), add a new directory within `src/test/integration` that itself contains a directory named `workspace` which in most cases contains the OpenTofu config that should be used in tests.
 
 The `mocks` directory contains no `workspace` subdirectory, hence it's not loaded as a test suite. It contains API mocks that are currently shared by all test suites.
 
