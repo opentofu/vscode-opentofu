@@ -30,7 +30,7 @@ suite('hover', () => {
       await testHover(docUri, new vscode.Position(0, 1), [
         new vscode.Hover(
           new vscode.MarkdownString(
-            '**terraform** _Block_\n\nTerraform block used to configure some high-level behaviors of OpenTofu',
+            '**terraform** _Block_\n\n`terraform` block used to configure some high-level behaviors of OpenTofu',
           ),
           new vscode.Range(new vscode.Position(0, 0), new vscode.Position(0, 9)),
         ),
