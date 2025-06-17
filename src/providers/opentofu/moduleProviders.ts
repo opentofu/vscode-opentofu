@@ -73,27 +73,27 @@ export class ModuleProvidersDataProvider implements vscode.TreeDataProvider<Modu
   async getProvider(): Promise<ModuleProviderItem[]> {
     const activeEditor = getActiveTextEditor();
 
-    await vscode.commands.executeCommand('setContext', 'tofu.providers.documentOpened', true);
-    await vscode.commands.executeCommand('setContext', 'tofu.providers.documentIsTerraform', true);
-    await vscode.commands.executeCommand('setContext', 'tofu.providers.lspConnected', true);
-    await vscode.commands.executeCommand('setContext', 'tofu.providers.noResponse', false);
-    await vscode.commands.executeCommand('setContext', 'tofu.providers.noProviders', false);
+    await vscode.commands.executeCommand('setContext', 'opentofu.providers.documentOpened', true);
+    await vscode.commands.executeCommand('setContext', 'opentofu.providers.documentIsTerraform', true);
+    await vscode.commands.executeCommand('setContext', 'opentofu.providers.lspConnected', true);
+    await vscode.commands.executeCommand('setContext', 'opentofu.providers.noResponse', false);
+    await vscode.commands.executeCommand('setContext', 'opentofu.providers.noProviders', false);
 
     if (activeEditor?.document === undefined) {
       // there is no open document
-      await vscode.commands.executeCommand('setContext', 'tofu.providers.documentOpened', false);
+      await vscode.commands.executeCommand('setContext', 'opentofu.providers.documentOpened', false);
       return [];
     }
 
     if (!isOpenTofuFile(activeEditor.document)) {
       // the open file is not a tofu file
-      await vscode.commands.executeCommand('setContext', 'tofu.providers.documentIsTerraform', false);
+      await vscode.commands.executeCommand('setContext', 'opentofu.providers.documentIsTerraform', false);
       return [];
     }
 
     if (this.client === undefined) {
       // connection to tofu-ls failed
-      await vscode.commands.executeCommand('setContext', 'tofu.providers.lspConnected', false);
+      await vscode.commands.executeCommand('setContext', 'opentofu.providers.lspConnected', false);
       return [];
     }
 
@@ -105,12 +105,12 @@ export class ModuleProvidersDataProvider implements vscode.TreeDataProvider<Modu
       response = await tofu.moduleProviders(documentURI.toString(), this.client);
       if (response === null) {
         // no response from tofu-ls
-        await vscode.commands.executeCommand('setContext', 'tofu.providers.noResponse', true);
+        await vscode.commands.executeCommand('setContext', 'opentofu.providers.noResponse', true);
         return [];
       }
     } catch {
       // error from tofu-ls
-      await vscode.commands.executeCommand('setContext', 'tofu.providers.noResponse', true);
+      await vscode.commands.executeCommand('setContext', 'opentofu.providers.noResponse', true);
       return [];
     }
 
@@ -127,13 +127,13 @@ export class ModuleProvidersDataProvider implements vscode.TreeDataProvider<Modu
       );
 
       if (list.length === 0) {
-        await vscode.commands.executeCommand('setContext', 'tofu.providers.noProviders', true);
+        await vscode.commands.executeCommand('setContext', 'opentofu.providers.noProviders', true);
       }
 
       return list;
     } catch {
       // error mapping response
-      await vscode.commands.executeCommand('setContext', 'tofu.providers.noResponse', true);
+      await vscode.commands.executeCommand('setContext', 'opentofu.providers.noResponse', true);
       return [];
     }
   }
