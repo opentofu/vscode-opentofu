@@ -16,7 +16,7 @@ function getTestWorkspacePath() {
   return path.join(__dirname, '../../../', 'testFixture');
 }
 
-describe('Terraform language tests', () => {
+describe('OpenTofu language tests', () => {
   let statusBar: StatusBar;
 
   before(async () => {
@@ -34,6 +34,6 @@ describe('Terraform language tests', () => {
   });
 
   it('can detect correct language', async () => {
-    expect(await statusBar.getCurrentLanguage()).toContain('Terraform');
+    expect(await statusBar.getCurrentLanguage()).toContain('OpenTofu');
   });
 });

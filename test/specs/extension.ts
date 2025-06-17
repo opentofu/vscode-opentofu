@@ -27,8 +27,6 @@ describe('VS Code Extension Testing', () => {
       'Source Control',
       'Run and Debug',
       'Extensions',
-      'HashiCorp Terraform',
-      'HCP Terraform',
     ]);
   });
 
@@ -42,7 +40,6 @@ describe('VS Code Extension Testing', () => {
 
   //   const outputView = await bottomBar.openOutputView();
   //   await outputView.wait();
-  //   await outputView.selectChannel('HashiCorp Terraform');
   //   const output = await outputView.getText();
 
   //   expect(output.some((element) => element.toLowerCase().includes('dispatching next job'.toLowerCase()))).toBeTruthy();

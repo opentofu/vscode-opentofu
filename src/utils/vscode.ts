@@ -44,9 +44,9 @@ export function getActiveTextEditor(): vscode.TextEditor | undefined {
 }
 
 /*
-  Detects whether this is a Terraform file we can perform operations on
+  Detects whether this is a OpenTofu file we can perform operations on
  */
-export function isTerraformFile(document?: vscode.TextDocument): boolean {
+export function isOpenTofuFile(document?: vscode.TextDocument): boolean {
   if (document === undefined) {
     return false;
   }
@@ -60,7 +60,7 @@ export function isTerraformFile(document?: vscode.TextDocument): boolean {
   // TODO: check for supported language IDs here instead
   if (document.fileName.endsWith('tf')) {
     // For the purposes of this extension, anything with the tf file
-    // extension is a Terraform file
+    // extension is a OpenTofu file
     return true;
   }
 
@@ -92,7 +92,7 @@ export async function handleLanguageClientStartError(error: unknown, ctx: vscode
     const messageText =
       'It looks like you opened a WSL url using a Windows UNC path' +
       ' outside of the [Remote WSL extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl).' +
-      ' The HashiCorp Terraform Extension works seamlessly with the Remote WSL Extension, but cannot work with this URL. Would you like to reopen this folder' +
+      ' The OpenTofu Extension works seamlessly with the Remote WSL Extension, but cannot work with this URL. Would you like to reopen this folder' +
       ' in the WSL Extension?';
 
     const choice = await vscode.window.showErrorMessage(

@@ -1,5 +1,5 @@
-name: "Performance issue report"
-description: "Let us know about issues with performance, such as slow speed or abnormally high CPU or memory usage."
+name: 'Performance issue report'
+description: 'Let us know about issues with performance, such as slow speed or abnormally high CPU or memory usage.'
 labels: [performance]
 assignees: []
 body:
@@ -54,12 +54,12 @@ body:
       required: true
 
   - type: input
-    id: terraform
+    id: tofu
     attributes:
-      label: Terraform Version
+      label: Tofu Version
       description: |
-        Output of `terraform version`
-      placeholder: Terraform v1.4.6 on darwin_arm64
+        Output of `tofu version`
+      placeholder: OpenTofu v1.6.0 on linux_amd64
     validations:
       required: true
 
@@ -88,13 +88,13 @@ body:
   - type: textarea
     id: configuration
     attributes:
-      label: Terraform Configuration
+      label: OpenTofu Configuration
       description: |
-        Include any relevant Terraform configuration that might be helpful for reproducing your issue.
+        Include any relevant OpenTofu configuration that might be helpful for reproducing your issue.
         Please remove any sensitive information such as passwords before sharing configuration snippets.
       placeholder: |
         resource "github_repository" "test" {
-          name = "vscode-terraform"
+          name = "vscode-opentofu"
         }
 
         # etc...
@@ -154,8 +154,8 @@ body:
     attributes:
       label: Anything Else?
       description: |
-        Is there anything else we should know? For example, do you you use any tools for managing Terraform version/execution (e.g. `tfenv`) or any credentials helpers?
-        Do you have any other Terraform extensions installed?
+        Is there anything else we should know? For example, do you you use any tools for managing OpenTofu version/execution (e.g. `tfenv`) or any credentials helpers?
+        Do you have any other OpenTofu/Terraform extensions installed?
     validations:
       required: false
 
@@ -169,8 +169,7 @@ body:
       placeholder: |
         - #123
         - #456
-        - hashicorp/terraform#789
-        - https://developer.hashicorp.com/terraform/language/expressions/dynamic-blocks
+        - hashicorp/opentofu#789
     validations:
       required: false
 

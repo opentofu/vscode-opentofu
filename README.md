@@ -335,9 +335,9 @@ Supports variables (e.g. timestamp, pid, ppid) via Go template syntax `{{varname
 
 ## Known Issues
 
-- If there are syntax errors present in the document upon opening, intellisense may not provide all completions. Run `tofu: validate` and fix validation errors, then reload the document and intellisense will work again. Potential solutions for this are being investigated in See [hcl-lang#57](https://github.com/hashicorp/hcl-lang/issues/57) for more information.
-- Completion inside incomplete blocks, such as `resource "here` (without the closing quote and braces) is not supported. You can complete the 1st level blocks though and that will automatically trigger subsequent completion for e.g. resource types. See [tofu-ls#57](https://github.com/opentofu/tofu-ls/issues/57) for more information.
-- A number of different folder configurations (specifically when your root module is not a parent to any submodules) are not yet supported. More information available in ([tofu-ls#32](https://github.com/opentofu/tofu-ls/issues/32#issuecomment-649707345))
+- If there are syntax errors present in the document upon opening, intellisense may not provide all completions. Run `tofu validate` and fix validation errors, then reload the document and intellisense will work again. Potential solutions for this are being investigated in See [hcl-lang#57](https://github.com/hashicorp/hcl-lang/issues/57) for more information.
+- Completion inside incomplete blocks, such as `resource "here` (without the closing quote and braces) is not supported. You can complete the 1st level blocks though and that will automatically trigger subsequent completion for e.g. resource types. See [terraform-ls#57](https://github.com/hashicorp/terraform-ls/issues/57) for more information.
+- A number of different folder configurations (specifically when your root module is not a parent to any submodules) are not yet supported. More information available in ([terraform-ls#32](https://github.com/hashicorp/terraform-ls/issues/32#issuecomment-649707345))
 
 ## Troubleshooting
 
@@ -364,7 +364,7 @@ If you wish to install a specific version of the extension, you can choose 'Inst
 
 ## Contributing
 
-We are an open source project on GitHub and would enjoy your contributions! Consult our [development guide](DEVELOPMENT.md) for steps on how to get started. Please [open a new issue](https://github.com/opentofu/vscode-opentofu/issues) before working on a PR that requires significant effort. This will allow us to make sure the work is in line with the project's goals.
+We are an open source project on GitHub and would enjoy your contributions! Consult our [development guide](DEVELOPMENT.md) for steps on how to get started. Please [open a new issue](https://github.com/opentofu/opentofu-vscode/issues) before working on a PR that requires significant effort. This will allow us to make sure the work is in line with the project's goals.
 
 ## Credits
 

@@ -1,7 +1,7 @@
 {
   "icon": "assets/icons/opentofu_logo_universal.png",
-  "name": "vscode-opentofu",
-  "displayName": "VSCode - OpenTofu",
+  "name": "opentofu",
+  "displayName": "OpenTofu",
   "description": "Syntax highlighting and autocompletion for OpenTofu",
   "version": "0.2.1",
   "publisher": "opentofu",
@@ -24,8 +24,7 @@
   },
   "qna": "https://github.com/opentofu/vscode-opentofu/discussions/categories/q-a",
   "bugs": {
-    "url": "https://github.com/opentofu/vscode-opentofu/issues",
-    "email": "support@fastcode.io"
+    "url": "https://github.com/opentofu/vscode-opentofu/issues"
   },
   "categories": [
     "Programming Languages",
@@ -68,11 +67,7 @@
           ".tf",
           ".tofu"
         ],
-        "configuration": "./language-configuration.json",
-        "icon": {
-          "dark": "assets/icons/opentofu.svg",
-          "light": "assets/icons/opentofu.svg"
-        }
+        "configuration": "./language-configuration.json"
       },
       {
         "id": "opentofu-vars",
@@ -82,33 +77,29 @@
         "configuration": "./language-configuration.json"
       },
       {
-        "id": "terraform-test",
+        "id": "opentofu-test",
         "aliases": [
-          "OpenTofu Test"
+          "OpenTofu Test",
+          "Terraform Test",
+          "terraform-test"
         ],
         "extensions": [
           ".tftest.hcl",
           ".tofutest.hcl"
         ],
-        "configuration": "./language-configuration.json",
-        "icon": {
-          "dark": "assets/icons/opentofu.svg",
-          "light": "assets/icons/opentofu.svg"
-        }
+        "configuration": "./language-configuration.json"
       },
       {
-        "id": "terraform-mock",
+        "id": "opentofu-mock",
         "aliases": [
-          "Terraform Mock"
+          "OpenTofu Mock",
+          "Terraform Mock",
+          "terraform-mock"
         ],
         "extensions": [
           ".tfmock.hcl"
         ],
-        "configuration": "./language-configuration.json",
-        "icon": {
-          "dark": "assets/icons/opentofu.svg",
-          "light": "assets/icons/opentofu.svg"
-        }
+        "configuration": "./language-configuration.json"
       },
       {
         "id": "json",
@@ -129,12 +120,12 @@
         "path": "./syntaxes/terraform.tmGrammar.json"
       },
       {
-        "language": "terraform-test",
+        "language": "opentofu-test",
         "scopeName": "source.hcl",
         "path": "./syntaxes/hcl.tmGrammar.json"
       },
       {
-        "language": "terraform-mock",
+        "language": "opentofu-mock",
         "scopeName": "source.hcl",
         "path": "./syntaxes/hcl.tmGrammar.json"
       }
@@ -257,60 +248,64 @@
         "description": "Dependent"
       },
       {
-        "id": "terraform-data",
+        "id": "opentofu-data",
         "description": "Data source"
       },
       {
-        "id": "terraform-locals",
+        "id": "opentofu-locals",
         "description": "Locals"
       },
       {
-        "id": "terraform-module",
+        "id": "opentofu-module",
         "description": "Module"
       },
       {
-        "id": "terraform-output",
+        "id": "opentofu-output",
         "description": "Output"
       },
       {
-        "id": "terraform-provider",
+        "id": "opentofu-provider",
         "description": "Provider"
       },
       {
-        "id": "terraform-resource",
+        "id": "opentofu-resource",
         "description": "Resource"
       },
       {
-        "id": "terraform-provisioner",
+        "id": "opentofu-provisioner",
         "description": "Provisioner"
       },
       {
-        "id": "terraform-connection",
+        "id": "opentofu-connection",
         "description": "Connection"
       },
       {
-        "id": "terraform-variable",
+        "id": "opentofu-variable",
         "description": "Variable"
       },
       {
-        "id": "terraform-terraform",
+        "id": "opentofu-terraform",
         "description": "Terraform"
       },
       {
-        "id": "terraform-backend",
+        "id": "opentofu-backend",
         "description": "Backend"
       },
       {
-        "id": "terraform-name",
+        "id": "opentofu-name",
         "description": "Name"
       },
       {
-        "id": "terraform-type",
+        "id": "opentofu-type",
         "description": "Type"
       },
       {
-        "id": "terraform-requiredProviders",
+        "id": "opentofu-requiredProviders",
         "description": "Required providers"
+      },
+      {
+        "id": "opentofu-encryption",
+        "description": "Encryption"
       }
     ],
     "icons": {
@@ -602,54 +597,54 @@
     },
     "viewsWelcome": [
       {
-        "view": "terraform.providers",
-        "contents": "This view requires the language server to be enabled:\n[Open Settings](command:terraform.openSettingsJson)",
-        "when": "config.terraform.languageServer.enable === false"
+        "view": "opentofu.providers",
+        "contents": "This view requires the language server to be enabled:\n[Open Settings](command:opentofu.openSettingsJson)",
+        "when": "config.opentofu.languageServer.enable === false"
       },
       {
-        "view": "terraform.providers",
+        "view": "opentofu.providers",
         "contents": "There are no open Terraform files. Please open a Terraform configuration file to see installed providers.",
-        "when": "config.terraform.languageServer.enable && terraform.providers.documentOpened === false"
+        "when": "config.opentofu.languageServer.enable && opentofu.providers.documentOpened === false"
       },
       {
-        "view": "terraform.providers",
+        "view": "opentofu.providers",
         "contents": "The active document is not a Terraform file. Please open a Terraform configuration file to see installed providers.",
-        "when": "config.terraform.languageServer.enable && terraform.providers.documentIsTerraform === false"
+        "when": "config.opentofu.languageServer.enable && opentofu.providers.documentIsTerraform === false"
       },
       {
-        "view": "terraform.providers",
-        "contents": "There are no installed providers found for the current open file.\n[Learn more about providers](https://www.terraform.io/docs/language/providers/index.html)",
-        "when": "config.terraform.languageServer.enable && terraform.providers.noProviders === true"
+        "view": "opentofu.providers",
+        "contents": "There are no installed providers found for the current open file.\n[Learn more about providers](https://opentofu.org/docs/language/providers/)",
+        "when": "config.opentofu.languageServer.enable && opentofu.providers.noProviders === true"
       },
       {
-        "view": "terraform.providers",
-        "contents": "The active editor cannot provide information about installed providers.\n[Learn more about providers](https://www.terraform.io/docs/language/providers/index.html)",
-        "when": "config.terraform.languageServer.enable && terraform.providers.noResponse === true"
+        "view": "opentofu.providers",
+        "contents": "The active editor cannot provide information about installed providers.\n[Learn more about providers](https://opentofu.org/docs/language/providers/)",
+        "when": "config.opentofu.languageServer.enable && opentofu.providers.noResponse === true"
       },
       {
-        "view": "terraform.modules",
-        "contents": "This view requires the language server to be enabled:\n[Open Settings](command:terraform.openSettingsJson)",
-        "when": "config.terraform.languageServer.enable === false"
+        "view": "opentofu.modules",
+        "contents": "This view requires the language server to be enabled:\n[Open Settings](command:opentofu.openSettingsJson)",
+        "when": "config.opentofu.languageServer.enable === false"
       },
       {
-        "view": "terraform.modules",
+        "view": "opentofu.modules",
         "contents": "There are no open Terraform files. Please open a Terraform configuration file to see installed modules.",
-        "when": "config.terraform.languageServer.enable && terraform.modules.documentOpened === false"
+        "when": "config.opentofu.languageServer.enable && opentofu.modules.documentOpened === false"
       },
       {
-        "view": "terraform.modules",
+        "view": "opentofu.modules",
         "contents": "The active document is not a Terraform file. Please open a Terraform configuration file to see installed modules.",
-        "when": "config.terraform.languageServer.enable && terraform.modules.documentIsTerraform === false"
+        "when": "config.opentofu.languageServer.enable && opentofu.modules.documentIsTerraform === false"
       },
       {
-        "view": "terraform.modules",
-        "contents": "There are no installed modules found for the current open file.\n[Learn more about modules](https://www.terraform.io/docs/language/modules/develop/index.html)",
-        "when": "config.terraform.languageServer.enable && terraform.modules.noModules === true"
+        "view": "opentofu.modules",
+        "contents": "There are no installed modules found for the current open file.\n[Learn more about modules](https://opentofu.org/docs/language/providers/)",
+        "when": "config.opentofu.languageServer.enable && opentofu.modules.noModules === true"
       },
       {
-        "view": "terraform.modules",
-        "contents": "The active editor cannot provide information about installed modules.\n[Learn more about modules](https://www.terraform.io/docs/language/modules/develop/index.html)",
-        "when": "config.terraform.languageServer.enable && terraform.modules.noResponse === true"
+        "view": "opentofu.modules",
+        "contents": "The active editor cannot provide information about installed modules.\n[Learn more about modules](https://opentofu.org/docs/language/providers/)",
+        "when": "config.opentofu.languageServer.enable && opentofu.modules.noResponse === true"
       }
     ]
   },

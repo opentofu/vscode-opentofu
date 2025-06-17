@@ -8,7 +8,7 @@ import child_process = require('child_process');
 import * as os from 'os';
 import * as vscode from 'vscode';
 
-interface TerraformInfo {
+interface TofuInfo {
   version: string;
   platform: string;
   outdated: boolean;
@@ -54,11 +54,11 @@ Steps to reproduce the behavior:
 2. Type '...'
 3. See error
 
-Include any relevant Terraform configuration or project structure:
+Include any relevant OpenTofu configuration or project structure:
 
 \`\`\`terraform
 resource "github_repository" "test" {
-  name = "vscode-terraform"
+  name = "vscode-opentofu"
 }
 \`\`\`
 
@@ -82,8 +82,8 @@ Additional context
 
 <!--
 Add any other context about the problem here.
-Note whether you use any tools for managing Terraform version/execution (e.g. 'tfenv')
-any credentials helpers, or whether you have any other Terraform extensions installed.
+Note whether you use any tools for managing OpenTofu/Terraform version/execution (e.g. 'tfenv')
+any credentials helpers, or whether you have any other OpenTofu/Terraform extensions installed.
 -->
 `;
     }
@@ -95,7 +95,7 @@ ${problemText}
 Environment Information
 =====
 
-Terraform Information
+OpenTofu Information
 -----
 
 ${this.generateRuntimeMarkdown(await this.getRuntimeInfo())}
@@ -120,7 +120,7 @@ Extension Logs
 -----
 
 > Find this from the first few lines of the relevant Output pane:
-View -> Output -> 'HashiCorp Terraform'
+View -> Output -> 'OpenTofu'
 
 `;
     return body;
@@ -142,7 +142,7 @@ View -> Output -> 'HashiCorp Terraform'
     return extensionTable;
   }
 
-  generateRuntimeMarkdown(info: TerraformInfo): string {
+  generateRuntimeMarkdown(info: TofuInfo): string {
     const rows = `
 Version:\t${info.version}
 Platform:\t${info.platform}
@@ -173,7 +173,7 @@ Outdated:\t${info.outdated}
     return extensions;
   }
 
-  async getRuntimeInfo(): Promise<TerraformInfo> {
+  async getRuntimeInfo(): Promise<TofuInfo> {
     const tofuExe = 'tofuExe';
     const spawn = child_process.spawnSync;
 

@@ -6,7 +6,7 @@
 import * as tofu from '../../api/opentofu/opentofu';
 import * as vscode from 'vscode';
 
-import { getActiveTextEditor, isTerraformFile } from '../../utils/vscode';
+import { getActiveTextEditor, isOpenTofuFile } from '../../utils/vscode';
 
 import { LanguageClient } from 'vscode-languageclient/node';
 import { Utils } from 'vscode-uri';
@@ -85,7 +85,7 @@ export class ModuleProvidersDataProvider implements vscode.TreeDataProvider<Modu
       return [];
     }
 
-    if (!isTerraformFile(activeEditor.document)) {
+    if (!isOpenTofuFile(activeEditor.document)) {
       // the open file is not a tofu file
       await vscode.commands.executeCommand('setContext', 'tofu.providers.documentIsTerraform', false);
       return [];

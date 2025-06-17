@@ -12,7 +12,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-describe('Terraform language tests', () => {
+describe('OpenTofu language tests', () => {
   let statusBar: StatusBar;
 
   before(async () => {
@@ -30,6 +30,6 @@ describe('Terraform language tests', () => {
   });
 
   it('can detect correct language', async () => {
-    expect(await statusBar.getCurrentLanguage()).toContain('Terraform');
+    expect(await statusBar.getCurrentLanguage()).toContain('OpenTofu');
   });
 });

@@ -1,7 +1,6 @@
-name: "Bug report"
-description: "Let us know about an unexpected error, a crash, or an incorrect behavior."
+name: 'Bug report'
+description: 'Let us know about an unexpected error, a crash, or an incorrect behavior.'
 labels: [bug]
-assignees: []
 body:
   - type: markdown
     attributes:
@@ -107,7 +106,7 @@ body:
         }
 
         # etc...
-      render: opentofu
+      render: terraform
     validations:
       required: false
 
@@ -163,8 +162,8 @@ body:
     attributes:
       label: Anything Else?
       description: |
-        Is there anything else we should know? For example, do you you use any tools for managing Terraform version/execution (e.g. `tfenv`) or any credentials helpers?
-        Do you have any other Terraform extensions installed?
+        Is there anything else we should know? For example, do you you use any tools for managing OpenTofu/Terraform version/execution (e.g. `tfenv`) or any credentials helpers?
+        Do you have any other OpenTofu/Terraform extensions installed?
     validations:
       required: false
 
