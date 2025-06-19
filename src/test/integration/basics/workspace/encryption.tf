@@ -2,3 +2,9 @@
 terraform {
   encrypt
 }
+
+terraform {
+  encryption {
+    method "unencrypted" "migrate" {}
+  }
+}
