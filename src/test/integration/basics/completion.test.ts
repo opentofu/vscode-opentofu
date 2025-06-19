@@ -147,6 +147,26 @@ suite('completion', () => {
     });
   });
 
+  suite('encryption block completion', function suite() {
+    const docUri = getDocUri('encryption.tf');
+
+    this.beforeAll(async () => {
+      await open(docUri);
+      await activateExtension();
+    });
+
+    teardown(async () => {
+      await vscode.commands.executeCommand('workbench.action.closeAllEditors');
+    });
+    test('encryption keyword', async () => {
+      const expected = [new vscode.CompletionItem('encryption', vscode.CompletionItemKind.Class)];
+
+      await testCompletion(docUri, new vscode.Position(2, 9), {
+        items: expected,
+      });
+    });
+  });
+
   suite('tfvars completion', function suite() {
     const docUri = getDocUri('terraform.tfvars');
 
