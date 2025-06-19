@@ -1,9 +1,9 @@
 {
   "icon": "assets/icons/opentofu_logo_universal.png",
   "name": "vscode-opentofu",
-  "displayName": "VSCode - OpenTofu",
+  "displayName": "OpenTofu (official)",
   "description": "Syntax highlighting and autocompletion for OpenTofu",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "publisher": "opentofu",
   "license": "MPL-2.0",
   "preview": false,
@@ -413,23 +413,23 @@
         "title": "OpenTofu Features",
         "order": 3,
         "properties": {
-          "opentofu.languageServer.opentofu.path": {
+          "opentofu.languageServer.tofu.path": {
             "order": 0,
             "scope": "machine",
             "type": "string",
-            "description": "Path to the OpenTofu binary used by the OpenTofu Language Server"
+            "description": "Path to the Tofu binary used by the OpenTofu Language Server"
           },
-          "opentofu.languageServer.opentofu.timeout": {
+          "opentofu.languageServer.tofu.timeout": {
             "order": 1,
             "scope": "machine",
             "type": "string",
-            "description": "Overrides OpenTofu execution timeout (e.g. 30s) used by the OpenTofu Language Server"
+            "description": "Overrides Tofu execution timeout (e.g. 30s) used by the OpenTofu Language Server"
           },
-          "opentofu.languageServer.opentofu.logFilePath": {
+          "opentofu.languageServer.tofu.logFilePath": {
             "order": 2,
             "scope": "machine",
             "type": "string",
-            "markdownDescription": "Path to a file (`TF_LOG_PATH`) for OpenTofu executions to be logged used by the the OpenTofu Language Server. Support for variables (e.g. timestamp, pid, ppid) via Go template syntax `{{varName}}`"
+            "markdownDescription": "Path to a file (`TF_LOG_PATH`) for Tofu executions to be logged used by the the OpenTofu Language Server. Support for variables (e.g. timestamp, pid, ppid) via Go template syntax `{{varName}}`"
           }
         }
       },

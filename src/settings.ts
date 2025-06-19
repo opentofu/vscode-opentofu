@@ -42,7 +42,7 @@ export async function getInitializationOptions() {
     enableEnhancedValidation: true,
   });
 
-  const tofuOptions = config('opentofu').get<TofuOptions>('languageServer.opentofu', {
+  const tofuOptions = config('opentofu').get<TofuOptions>('languageServer.tofu', {
     path: '',
     timeout: '',
     logFilePath: '',
