@@ -61,4 +61,28 @@ suite('hover', () => {
       ]);
     });
   });
+
+  suite('provider for_each', function suite() {
+    const docUri = getDocUri('provider_foreach.tf');
+
+    this.beforeAll(async () => {
+      await open(docUri);
+      await activateExtension();
+    });
+
+    teardown(async () => {
+      await vscode.commands.executeCommand('workbench.action.closeAllEditors');
+    });
+
+    test('hovering for-each attribute at provider', async () => {
+      await testHover(docUri, new vscode.Position(12, 2), [
+        new vscode.Hover(
+          new vscode.MarkdownString(
+            '**for_each** _optional, map of any single type or set of string or object_\n\nA meta-argument that accepts a map or a set of strings, and creates an instance for each item in that map or set.\n\n**Note**: A given block cannot use both `count` and `for_each`.',
+          ),
+          new vscode.Range(new vscode.Position(12, 2), new vscode.Position(12, 35)),
+        ),
+      ]);
+    });
+  });
 });

@@ -6,7 +6,7 @@
 import * as assert from 'assert';
 import * as vscode from 'vscode';
 
-import { activateExtension, getDocUri, open, testHover, testReferences } from '../../helper';
+import { activateExtension, getDocUri, open, testReferences } from '../../helper';
 
 suite('references', () => {
   suite('module references', function suite() {
@@ -55,18 +55,6 @@ suite('references', () => {
     test('language is registered', async () => {
       const doc = await vscode.workspace.openTextDocument(docUri);
       assert.equal(doc.languageId, 'opentofu', 'document language should be `opentofu`');
-    });
-
-    // Creating this test for testing the alias provider reference and if for_each argument is shown without errors
-    test('hovering for-each attribute at provider', async () => {
-      await testHover(docUri, new vscode.Position(12, 2), [
-        new vscode.Hover(
-          new vscode.MarkdownString(
-            '**for_each** _optional, map of any single type or set of string or object_\n\nA meta-argument that accepts a map or a set of strings, and creates an instance for each item in that map or set.\n\n**Note**: A given block cannot use both `count` and `for_each`.',
-          ),
-          new vscode.Range(new vscode.Position(12, 2), new vscode.Position(12, 35)),
-        ),
-      ]);
     });
   });
 
