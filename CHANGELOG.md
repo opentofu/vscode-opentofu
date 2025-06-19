@@ -1,12 +1,7 @@
 # Changelog
 
-## 0.2.1 (2024-09-11)
-
-## 0.2.0 (2024-09-11)
-
-## 0.2.0-beta1 (2024-09-11)
-
-## 0.1.1 (2024-09-11)
-
-## 0.1.0 (2024-09-11)
-
+## 0.2.3 (2025-06-19)
+- Support for `encryption` block
+- Support for provider `for_each`
+- Documentation updates
+- Small fixes and performance improvements
