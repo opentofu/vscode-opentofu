@@ -20,9 +20,20 @@ resource "aws_cloudwatch_log_group" "lambda_cloudfront" {
   for_each = setsubtract(var.aws_active_regions, var.aws_disabled_regions)
 }
 
-module "ai" {
-  source = "./ai"
+resource "aws_cloudwatch_log_group" "lambda_cloudfront_2" {
+  name     = "/aws/lambda/${each.key}.lambda"
+  provider = aws.by_region[each.key]
+  for_each = setsubtract(var.aws_active_regions, var.aws_disabled_regions)
+}
 
-  providers = aws.by_region[each.key]
-  for_each  = setsubtract(var.aws_active_regions, var.aws_disabled_regions)
+provider "aws" {
+  alias    = "by_name"
+  for_each = var.aws_active_regions
+  region   = each.key
+}
+
+resource "aws_cloudwatch_log_group" "lambda_cloudfront_3" {
+  name     = "/aws/lambda/${each.key}.lambda"
+  provider = aws.by_name[each.key]
+  for_each = setsubtract(var.aws_active_regions, var.aws_disabled_regions)
 }

@@ -52,11 +52,18 @@ suite('references', () => {
       await vscode.commands.executeCommand('workbench.action.closeAllEditors');
     });
 
-    test('language is registered', async () => {
-      const doc = await vscode.workspace.openTextDocument(docUri);
-      assert.equal(doc.languageId, 'opentofu', 'document language should be `opentofu`');
+    test('provider alias references', async () => {
+      // alias = by_region
+      await testReferences(docUri, new vscode.Position(12, 10), [
+        new vscode.Location(docUri, new vscode.Range(new vscode.Position(13, 13), new vscode.Position(13, 21))),
+        new vscode.Location(docUri, new vscode.Range(new vscode.Position(18, 13), new vscode.Position(18, 26))),
+        new vscode.Location(docUri, new vscode.Range(new vscode.Position(24, 13), new vscode.Position(24, 26))),
+      ]);
+
+      // alias = by_name
+      await testReferences(docUri, new vscode.Position(29, 17), [
+        new vscode.Location(docUri, new vscode.Range(new vscode.Position(36, 13), new vscode.Position(36, 24))),
+      ]);
     });
   });
-
-  suite.skip('provider alias reference', async () => {});
 });
