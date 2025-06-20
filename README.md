@@ -1,6 +1,6 @@
 # OpenTofu Extension for Visual Studio Code
 
-[OpenTofu Extension for Visual Studio Code (VS Code)](https://marketplace.visualstudio.com/items?itemName=opentofu.opentofu) with the [OpenTofu Language Server](https://github.com/opentofu/tofu-ls) adds editing features for [OpenTofu](https://opentofu.org/) files such as syntax highlighting, IntelliSense, code navigation, code formatting, module explorer and much more!
+[OpenTofu Extension for Visual Studio Code (VS Code)](https://marketplace.visualstudio.com/items?itemName=opentofu.vscode-opentofu) with the [OpenTofu Language Server](https://github.com/opentofu/tofu-ls) adds editing features for [OpenTofu](https://opentofu.org/) files such as syntax highlighting, IntelliSense, code navigation, code formatting, module explorer and much more!
 
 ## Quick Start
 
@@ -8,7 +8,7 @@ Get started writing OpenTofu configurations with VS Code in three steps:
 
 - **Step 1:** If you haven't done so already, install [OpenTofu](https://opentofu.org/docs/intro/install/)
 
-- **Step 2:** Install the [OpenTofu Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=opentofu.opentofu).
+- **Step 2:** Install the [OpenTofu Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=opentofu.vscode-opentofu).
 
 - **Step 3:** To activate the extension, open any folder or VS Code workspace containing OpenTofu files. Once activated, the OpenTofu language indicator will appear in the bottom right corner of the window.
 
@@ -187,7 +187,7 @@ To provide the extension with an up-to-date schema for the OpenTofu providers us
 
 The Visual Studio Code [Remote - WSL extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl) lets you use the Windows Subsystem for Linux (WSL) as your full-time development environment right from VS Code. You can author OpenTofu configuration files in a Linux-based environment, use Linux-specific toolchains and utilities from the comfort of Windows.
 
-The Remote WSL extension runs the [OpenTofu Extension](https://marketplace.visualstudio.com/items?itemName=opentofu.opentofu) and other extensions directly in WSL so you can edit files located in WSL or the mounted Windows filesystem (for example /mnt/c) without worrying about pathing issues, binary compatibility, or other cross-OS challenges.
+The Remote WSL extension runs the [OpenTofu Extension](https://marketplace.visualstudio.com/items?itemName=opentofu.vscode-opentofu) and other extensions directly in WSL so you can edit files located in WSL or the mounted Windows filesystem (for example /mnt/c) without worrying about pathing issues, binary compatibility, or other cross-OS challenges.
 
 For a detailed walkthrough for how to get started using WSL and VS Code, see https://code.visualstudio.com/docs/remote/wsl-tutorial.
 
