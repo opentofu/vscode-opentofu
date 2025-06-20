@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.3.2 (2025-06-20)
+- `encryption` block key providers now support all available options
+
 ## 0.3.1 (2025-06-19)
 - displayName change to "OpenTofu (official)"
 - Fixes LS binary options, "opentofu" -> "tofu"
