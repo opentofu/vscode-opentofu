@@ -8,7 +8,7 @@ export interface InitializationOptions {
   indexing?: IndexingOptions;
   experimentalFeatures?: ExperimentalFeatures;
   ignoreSingleFileWarning?: boolean;
-  opentofu?: TofuOptions;
+  tofu?: TofuOptions;
   validation?: ValidationOptions;
 }
 
@@ -67,7 +67,7 @@ export async function getInitializationOptions() {
     validation,
     experimentalFeatures,
     ignoreSingleFileWarning,
-    opentofu: tofuOptions,
+    tofu: tofuOptions,
     ...(rootModulePaths.length > 0 && { rootModulePaths }),
     indexing,
   };
