@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.3 (2025-06-26)
+- Matching `removed` block schema to OpenTofu implementation
+- Adding references to provider for each on LSP
+- Integration tests for encryption and resource provider for-each block
+- Fixing a bug when passing `tofu` binary options
+
 ## 0.3.2 (2025-06-20)
 - `encryption` block key providers now support all available options
 
