@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.3.4 (2025-07-07)
+- Adding references to complex object variables
+
 ## 0.3.3 (2025-06-26)
 - Matching `removed` block schema to OpenTofu implementation
 - Adding references to provider for each on LSP
