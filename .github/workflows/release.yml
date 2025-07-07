@@ -90,7 +90,7 @@ jobs:
         run: npm run package -- --githubBranch $GITHUB_REF_NAME --pre-release --target=${{ matrix.vsce_target }}
 
       - name: Package Stable VSIX
-        if: inputs.deploy_type == 'stable'
+        if: (inputs.deploy_type == 'stable' || startsWith(github.ref, 'refs/tags/v'))
         run: npm run package -- --target=${{ matrix.vsce_target }}
 
       - name: Upload vsix as artifact
