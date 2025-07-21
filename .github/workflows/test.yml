@@ -62,7 +62,7 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       # Since we are using a matrix, we need to check if files changed on the step level, not on the job level
-      - name: Check if files changed
+      - name: Check if source files changed
         if: ${{ needs.fileschanged.outputs.files != 0}}
         run: |
           echo "we need to define a run key here, just to have a step defined"
