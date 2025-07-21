@@ -5,22 +5,28 @@ on:
   push:
     branches:
       - main
-      - pre-release
-    paths-ignore:
-      - 'syntaxes/**'
-      - 'tests/**'
-      - '**.md'
   pull_request:
-    branches:
-      - main
-      - pre-release
-    paths-ignore:
-      - 'syntaxes/**'
-      - 'tests/**'
-      - '**.md'
 
 jobs:
+  fileschanged:
+    name: List files changed for pull request
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Fetch source code"
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - id: diff
+        run: |
+          echo "Comparing head_commit ${{github.event.push.head_commit}} to base_ref ${{github.event.push.base_ref}}"
+          git fetch --no-tags --prune --no-recurse-submodules --depth=1 origin ${{github.event.pull_request.base.ref}}
+          #
+          # Run changes only for Typescript, JSON and TF files
+          #
+          echo "files=$(git diff --name-only origin/${{github.event.pull_request.base.ref}} | grep -e '\.ts' -e '\.json' -e '\.tf' | wc -l)" | tee -a "$GITHUB_OUTPUT"
+    outputs:
+      files: ${{ steps.diff.outputs.files }}
   lint:
+    needs: fileschanged
+    if: ${{ needs.fileschanged.outputs.files != 0}}
     runs-on: ubuntu-latest
     timeout-minutes: 3
     steps:
@@ -55,6 +61,11 @@ jobs:
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
+      # Since we are using a matrix, we need to check if files changed on the step level, not on the job level
+      - name: Check if files changed
+        if: ${{ needs.fileschanged.outputs.files != 0}}
+        run: |
+          echo "we need to define a run key here, just to have a step defined"
       - name: Checkout Repo
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
