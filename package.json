@@ -13,7 +13,7 @@
   ],
   "engines": {
     "npm": "~10.X || ~11.X",
-    "node": "~20.X",
+    "node": "~20.X || ~22.X || ~24.X",
     "vscode": "^1.88.0"
   },
   "langServer": {
