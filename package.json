@@ -3,7 +3,7 @@
   "name": "vscode-opentofu",
   "displayName": "OpenTofu (official)",
   "description": "Syntax highlighting and autocompletion for OpenTofu",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "publisher": "opentofu",
   "license": "MPL-2.0",
   "preview": false,
@@ -17,7 +17,7 @@
     "vscode": "^1.88.0"
   },
   "langServer": {
-    "version": "0.0.8"
+    "version": "0.0.9"
   },
   "syntax": {
     "version": "0.7.0"
