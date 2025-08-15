@@ -1,7 +1,7 @@
 # Changelog
 
 ## 0.3.5 (2025-08-15)
-- The `dynamic` block support for providers
+- Adds the `dynamic` block support inside the `provider` blocks.
 
 ## 0.3.4 (2025-07-07)
 - Adding references to complex object variables
