@@ -4,8 +4,8 @@
 
 on:
   pull_request:
-    paths:
-      - !.github/**
+    paths-ignore:
+      - '.github/**'
     branches:
       - main
       - pre-release
