@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.3.6 (2025-08-15)
+- Adds documentation links for `data_source` resources. 
+
 ## 0.3.5 (2025-08-15)
 - Adds the `dynamic` block support inside the `provider` blocks.
 
