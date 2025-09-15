@@ -702,7 +702,7 @@
     "@vscode/test-cli": "^0.0.9",
     "@vscode/test-electron": "^2.3.9",
     "@vscode/test-web": "^0.0.56",
-    "@vscode/vsce": "^2.19.0",
+    "@vscode/vsce": "^3.6.0",
     "@wdio/cli": "^8.38.1",
     "@wdio/local-runner": "^8.38.0",
     "@wdio/mocha-framework": "^8.38.0",
