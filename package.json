@@ -679,7 +679,7 @@
   "dependencies": {
     "@zodios/core": "^10.9.2",
     "@zodios/plugins": "^10.6.0",
-    "axios": "^1.7.4",
+    "axios": "^1.12.2",
     "semver": "^7.5.4",
     "tar": "^7.4.3",
     "vscode-languageclient": "^9.0.1",
