@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.1 (2025-09-16)
+- Fix: language server crashing on resources with no provider prefix
+- Fix: Removes the `fallback` attribute from the fallback block
+- Fix: Adds pseudo-recursive fallback blocks for encryption
+- Internal: Dependency updates for security
+
 ## 0.4.0 (2025-09-11)
 - Adds documentation links for `data_source` resources. 
 
