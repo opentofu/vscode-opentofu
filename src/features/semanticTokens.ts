@@ -28,7 +28,6 @@ export class CustomSemanticTokens implements StaticFeature {
     private manifest: PartialManifest,
   ) {}
 
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   clear(): void {}
 
   getState(): FeatureState {

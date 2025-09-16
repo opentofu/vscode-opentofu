@@ -11,7 +11,6 @@ import { Utils } from 'vscode-uri';
 import { clientSupportsCommand } from './../../utils/clientHelpers';
 import { getActiveTextEditor } from './../../utils/vscode';
 
-/* eslint-disable @typescript-eslint/naming-convention */
 export interface ModuleCaller {
   uri: string;
 }
@@ -54,7 +53,6 @@ export interface TofuInfoResponse {
   required_version?: string;
   discovered_version?: string;
 }
-/* eslint-enable @typescript-eslint/naming-convention */
 
 export async function tofuVersion(moduleUri: string, client: LanguageClient): Promise<TofuInfoResponse> {
   const command = 'tofu-ls.module.tofu';

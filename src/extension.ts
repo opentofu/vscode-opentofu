@@ -124,7 +124,6 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
       return false;
     },
     errorHandler: {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       error: (error: Error, message: Message, count: number) => {
         return {
           message: `OpenTofu LS connection error: (${count ?? 0})\n${error?.message}\n${message?.jsonrpc}`,

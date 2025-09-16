@@ -35,7 +35,6 @@ export class ShowReferencesFeature implements StaticFeature {
 
   constructor(private _client: BaseLanguageClient) {}
 
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   clear(): void {}
 
   getState(): FeatureState {

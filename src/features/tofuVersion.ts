@@ -24,7 +24,6 @@ export class TofuVersionFeature implements StaticFeature {
     private outputChannel: vscode.OutputChannel,
   ) {}
 
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   clear(): void {}
 
   getState(): FeatureState {

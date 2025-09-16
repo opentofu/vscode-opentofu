@@ -26,7 +26,6 @@ export class ModuleProvidersFeature implements StaticFeature {
     private view: ModuleProvidersDataProvider,
   ) {}
 
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   clear(): void {}
 
   getState(): FeatureState {
