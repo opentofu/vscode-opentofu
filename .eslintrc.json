@@ -37,7 +37,7 @@
       "rules": {
         "@typescript-eslint/no-explicit-any": ["warn", { "ignoreRestArgs": true }],
         "@typescript-eslint/naming-convention": "off",
-        "@typescript-eslint/semi": "warn",
+        "@typescript-eslint/no-require-imports": "off",
         "curly": "warn",
         "eqeqeq": "warn",
         "no-throw-literal": "warn",

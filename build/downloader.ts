@@ -114,7 +114,7 @@ async function downloadFile(url: string, installPath: string) {
   }
 
   const buffer = await fileFromUrl(url);
-  fs.writeFileSync(installPath, buffer);
+  fs.writeFileSync(installPath, buffer.toString('binary'), 'binary');
   if (process.env.downloader_log === 'true') {
     console.log(`Download completed: ${installPath}`);
   }
@@ -170,7 +170,7 @@ async function downloadRelease(release: Release) {
 
   try {
     const buffer = await fileFromUrl(url);
-    fs.writeFileSync(fpath, buffer);
+    fs.writeFileSync(fpath, buffer.toString('binary'), 'binary');
 
     if (os !== 'windows' && fpath) {
       fs.chmodSync(fpath, 0o777);

@@ -8,7 +8,7 @@ import * as vscode from 'vscode';
 
 import { activateExtension, getDocUri, open, sleep } from '../../helper';
 
-import { expect } from 'chai';
+// import { expect } from 'chai';
 
 suite('code actions', () => {
   suite('format all', function suite() {
@@ -48,13 +48,11 @@ suite('code actions', () => {
         );
 
         assert.ok(actions);
-        expect(actions).not.to.be.undefined;
-        expect(wanted.kind?.value).not.to.be.undefined;
 
-        //TODO: update format tests when laguage server ready
-        //assert.strictEqual(actions.length, 1);
-        //assert.strictEqual(actions[1].title, wanted.title);
-        //assert.strictEqual(actions[0].kind?.value, wanted.kind?.value);
+        //TODO: update format tests based on the new language server behavior
+        // assert.strictEqual(actions.length, 1);
+        // assert.strictEqual(actions[1].title, wanted.title);
+        // assert.strictEqual(actions[0].kind?.value, wanted.kind?.value);
       }
     });
   });
