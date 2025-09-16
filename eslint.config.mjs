@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) The OpenTofu Authors
+ * SPDX-License-Identifier: MPL-2.0
+ * Copyright (c) 2024 HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { defineConfig, globalIgnores } from "eslint/config";
 import globals from "globals";
 import typescriptEslint from "@typescript-eslint/eslint-plugin";
