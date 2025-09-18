@@ -67,6 +67,10 @@
           ".tf",
           ".tofu"
         ],
+        "icon": {
+          "light": "./assets/icons/opentofu.svg",
+          "dark": "./assets/icons/opentofu.svg"
+        },
         "configuration": "./language-configuration.json"
       },
       {
@@ -74,6 +78,10 @@
         "extensions": [
           ".tfvars"
         ],
+        "icon": {
+          "light": "./assets/icons/opentofu.svg",
+          "dark": "./assets/icons/opentofu.svg"
+        },
         "configuration": "./language-configuration.json"
       },
       {
@@ -83,6 +91,10 @@
           "Terraform Test",
           "terraform-test"
         ],
+        "icon": {
+          "light": "./assets/icons/opentofu.svg",
+          "dark": "./assets/icons/opentofu.svg"
+        },
         "extensions": [
           ".tftest.hcl",
           ".tofutest.hcl"
@@ -96,6 +108,10 @@
           "Terraform Mock",
           "terraform-mock"
         ],
+        "icon": {
+          "light": "./assets/icons/opentofu.svg",
+          "dark": "./assets/icons/opentofu.svg"
+        },
         "extensions": [
           ".tfmock.hcl"
         ],
