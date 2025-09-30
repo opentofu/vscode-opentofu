@@ -58,8 +58,8 @@ export function isOpenTofuFile(document?: vscode.TextDocument): boolean {
   }
 
   // TODO: check for supported language IDs here instead
-  if (document.fileName.endsWith('tf')) {
-    // For the purposes of this extension, anything with the tf file
+  if (document.fileName.endsWith('tf') || document.fileName.endsWith('tofu')) {
+    // For the purposes of this extension, anything with the .tf or .tofu file
     // extension is a OpenTofu file
     return true;
   }
