@@ -8,7 +8,7 @@ Release process:
 
    - Bump the language server version in `package.json` if the release should include a [LS update](https://github.com/opentofu/tofu-ls/releases)
    - Update the [CHANGELOG.md](../CHANGELOG.md) with the recent changes
-   - Bump the version in `package.json` (and `package-lock.json`) manually.
+   - Bump the version in by running `npm version vX.Y.Z --no-git-tag-version` - creates unstaged version update in package.json and package-lock.json files.
 1. Review & merge the branch and wait for the [Test Workflow](https://github.com/opentofu/vscode-opentofu/actions/workflows/test.yml) on `main` to complete.
 1. Go to the [Draft a new release page](https://github.com/opentofu/vscode-opentofu/releases/new);
 1. Click on "Choose a tag", type "vX.Y.Z", then click on the "Create a new tag: vX.Y.Z" label;
