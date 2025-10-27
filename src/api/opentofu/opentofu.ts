@@ -55,7 +55,7 @@ export interface TofuInfoResponse {
 }
 
 export async function tofuVersion(moduleUri: string, client: LanguageClient): Promise<TofuInfoResponse> {
-  const command = 'tofu-ls.module.tofu';
+  const command = 'tofu-ls.module.opentofu';
 
   return await execWorkspaceLSCommand<TofuInfoResponse>(command, moduleUri, client);
 }
