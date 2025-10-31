@@ -65,6 +65,9 @@ jobs:
             if [ "$ls_version" == "latest" ] && [ "$current_ls_version" == "$latest_ls_version" ]; then
               ls_version=$latest_ls_version
             else
+              if [ "$ls_version" == "latest" ]; then
+                ls_version=$latest_ls_version
+              fi
               # $ls_version in this case is already set from input
               updates_ls_version=true
               echo "ls_version_changed=true" >> $GITHUB_OUTPUT
@@ -176,7 +179,7 @@ jobs:
       - name: Commit changes
         run: |
           git add package.json package-lock.json CHANGELOG.md "${{ steps.changelog_entry.outputs.release_file }}"
-          git commit -m "chore: prepare release ${{ steps.version.outputs.next_version }}"
+          git commit -s -m "chore: prepare release ${{ steps.version.outputs.next_version }}"
           git push origin ${{ steps.version.outputs.branch_name }}
 
       - name: Create Pull Request
