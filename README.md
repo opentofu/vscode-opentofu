@@ -301,10 +301,16 @@ If you want to automatically ignore certain directories when tofu-ls indexes fil
 
 ### OpenTofu command options
 
-You can configure the path to the tofu binary used by tofu-ls to perform operations inside the editor by configuring this setting:
+You can configure the path to the `tofu-ls` binary used by the VS Code Extension to perform operations inside the editor by configuring this setting:
 
 ```json
-"opentofu.languageServer.path": "C:/some/folder/path"
+"opentofu.languageServer.path": "C:/some/folder/tofu-ls"
+```
+
+You can configure the path to the tofu binary used by the extension with the following setting:
+
+```json
+"opentofu.languageServer.tofu.path": "C:/some/folder/tofu"
 ```
 
 You can override the opentofu execution timeout by configuring this setting:
