@@ -307,7 +307,7 @@ You can configure the path to the `tofu-ls` binary used by the VS Code Extension
 "opentofu.languageServer.path": "C:/some/folder/tofu-ls"
 ```
 
-You can configure the path to the tofu binary used by the extension with the following setting:
+You can configure the path to the `tofu` binary used by the language server with the following setting:
 
 ```json
 "opentofu.languageServer.tofu.path": "C:/some/folder/tofu"
