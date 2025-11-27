@@ -15,6 +15,11 @@ on:
         options:
           - stable
           - prerelease
+      skip_release_and_tag_creation:
+        description: 'Skip the release and tag creation steps'
+        type: boolean
+        required: false
+        default: false
   push:
     tags: ['v*']
   pull_request:
@@ -24,25 +29,25 @@ on:
 jobs:
   validate-release-pr:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true
+    if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
     outputs:
-      has_release_label: ${{ steps.check_label.outputs.has_release_label }}
+      should_release_on_github: ${{ steps.check_label.outputs.should_release_on_github }}
     steps:
       - name: Check if PR has release label
         id: check_label
         run: |
-          if [[ ${{ contains(github.event.pull_request.labels.*.name, 'release') }} = "true" ]]; then
-            echo "This workflow was triggered by the release PR merge"
-            echo "has_release_label=true" >> $GITHUB_OUTPUT
+          if [[ ${{ contains(github.event.pull_request.labels.*.name, 'release') }} = "true" || ${{ inputs.skip_release_and_tag_creation }} = "false" ]]; then
+            echo "This workflow was triggered by the release PR merge or 'skip_release_and_tag_creation' input is false on the 'workflow_dispatch' event. Releasing."
+            echo "should_release_on_github=true" >> $GITHUB_OUTPUT
           else
-            echo "PR does not have 'release' label. This workflow should only run for release PRs."
-            echo "has_release_label=false" >> $GITHUB_OUTPUT
+            echo "PR does not have 'release' label or 'skip_release_and_tag_creation' input is true on the 'workflow_dispatch' event. Not releasing."
+            echo "should_release_on_github=false" >> $GITHUB_OUTPUT
           fi
 
   create-github-release:
     runs-on: ubuntu-latest
     needs: validate-release-pr
-    if: github.event.pull_request.merged == true && needs.validate-release-pr.outputs.has_release_label == 'true'
+    if: github.event.pull_request.merged == true && needs.validate-release-pr.outputs.should_release_on_github == 'true'
     permissions:
       contents: write
     steps:
@@ -98,8 +103,8 @@ jobs:
   build:
     name: Package
     needs: [check-version-file, create-github-release, validate-release-pr]
-    # Triggering this workflow, either if it was triggered by the tag push and went through validation, or release PR was merged, hence we check if we created automated github release
-    if: always() && (needs.check-version-file.result == 'success' || needs.create-github-release.result == 'success')
+    # Triggering this workflow, either if it was triggered by the tag push and went through validation, or release PR was merged
+    if: always() && (needs.validate-release-pr.outputs.should_release_on_github == 'true' && needs.check-version-file.result == 'success' && needs.create-github-release.result == 'success') || needs.validate-release-pr.outputs.should_release_on_github == 'false'
     strategy:
       matrix:
         include:
@@ -156,7 +161,7 @@ jobs:
       - name: Package Stable VSIX
         # If the workflow trigger was manual, by tag push or by PR merge
         # Currently release PR merge indicates stable release
-        if: (inputs.deploy_type == 'stable' || startsWith(github.ref, 'refs/tags/v') || github.event.pull_request.merged == true)
+        if: inputs.deploy_type == 'stable' || startsWith(github.ref, 'refs/tags/v') || github.event.pull_request.merged == true
         run: npm run package -- --target=${{ matrix.vsce_target }}
 
       - name: Upload vsix as artifact
@@ -169,7 +174,7 @@ jobs:
     name: Publish Prerelease to Marketplace
     runs-on: ubuntu-latest
     needs: build
-    if: always() && inputs.deploy_type == 'prerelease' && needs.build.result == 'success'
+    if: (! failure() && ! cancelled()) && inputs.deploy_type == 'prerelease'
     steps:
       - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4.1.8
       - name: Publish Prerelease to Marketplace
@@ -181,8 +186,7 @@ jobs:
     name: Publish Marketplace
     runs-on: ubuntu-latest
     needs: build
-    # Run if the build has succeeded and we are not doing prerelease
-    if: always() && inputs.deploy_type != 'prerelease' && needs.build.result == 'success'
+    if: (! failure() && ! cancelled()) && (inputs.deploy_type == 'stable' || startsWith(github.ref, 'refs/tags/v') || github.event.pull_request.merged == true)
     steps:
       - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4.1.8
       - name: Publish Stable to Marketplace
@@ -194,8 +198,7 @@ jobs:
     name: Publish OpenVSX
     runs-on: ubuntu-latest
     needs: build
-    # Run if the build has succeeded and we are not doing prerelease
-    if: always() && inputs.deploy_type != 'prerelease' && needs.build.result == 'success'
+    if: (! failure() && ! cancelled()) && (inputs.deploy_type == 'stable' || startsWith(github.ref, 'refs/tags/v') || github.event.pull_request.merged == true)
     steps:
       - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4.1.8
       - name: Publish Stable to OpenVSX
