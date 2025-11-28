@@ -9,6 +9,7 @@ Release process:
    - Depending on which type of release we are doing, select either: major, minor or patch.
    - If the release should include a `tofu-ls` version update, set the `ls-version` input, e.g., 0.1.0, latest, etc.
 
-1. Once the workflow is finished, review the PR it created. Make adjustments if necessary and merge it.
+1. Once the workflow is finished, [put the created PR as "Ready To Review"](https://github.com/opentofu/vscode-opentofu/issues/112).
+1. Review the PR. Make adjustments if necessary and merge it.
 
 That is the whole flow. Once the PR is merged, the `Release` workflow will be triggered automatically.
