@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.6.0 (2025-11-28)
+
+*Includes a new LS version - [tofu-ls 0.3.0](https://github.com/opentofu/tofu-ls/releases/tag/v0.3.0)*
+    
+### Other Changes
+* Clarifying binary settings by @diofeher in https://github.com/opentofu/vscode-opentofu/pull/108
+* Fix for prepare workflow: by @Gogotchuri in https://github.com/opentofu/vscode-opentofu/pull/105
+* Add release support for alpine architectures by @diofeher in https://github.com/opentofu/vscode-opentofu/pull/109
+
+
+**Full Changelog**: https://github.com/opentofu/vscode-opentofu/compare/v0.5.0...v0.6.0
+
+
 ## v0.5.0 (2025-10-31)
 
 *Includes a new LS version - [tofu-ls latest](https://github.com/opentofu/tofu-ls/releases/tag/vlatest)*
