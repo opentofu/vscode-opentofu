@@ -15,10 +15,6 @@ on:
         options:
           - stable
           - prerelease
-      langserver:
-        description: 'The tofu-ls version to use. If not specified will use version in package.json'
-        required: false
-        type: string
   push:
     tags: ['v*']
   pull_request:
