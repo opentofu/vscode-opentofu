@@ -186,6 +186,7 @@ jobs:
         run: |
           gh pr create \
             --label "release" \
+            --draft \ # Draft is needed to allow the PR to trigger the run checks after someone reviews the PR
             --title "Release ${{ steps.version.outputs.next_version }}" \
             --body "$(cat <<EOF
           ## Release ${{ steps.version.outputs.next_version }}
