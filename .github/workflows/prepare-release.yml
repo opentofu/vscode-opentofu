@@ -184,9 +184,10 @@ jobs:
 
       - name: Create Pull Request
         run: |
+          # Draft is needed to allow the PR to trigger the run checks after someone puts the PR as "Ready To Review"
           gh pr create \
             --label "release" \
-            --draft \ # Draft is needed to allow the PR to trigger the run checks after someone reviews the PR
+            --draft \
             --title "Release ${{ steps.version.outputs.next_version }}" \
             --body "$(cat <<EOF
           ## Release ${{ steps.version.outputs.next_version }}
