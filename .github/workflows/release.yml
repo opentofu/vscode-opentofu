@@ -125,10 +125,10 @@ jobs:
             ls_target: darwin_arm64
             npm_config_arch: arm64
           - vsce_target: alpine-x64
-            ls_target: alpine-x64
+            ls_target: linux_x86_64
             npm_config_arch: x64
           - vsce_target: alpine-arm64
-            ls_target: alpine-arm64
+            ls_target: linux_arm64
             npm_config_arch: arm64
     runs-on: 'ubuntu-latest'
     steps:
