@@ -40,6 +40,7 @@ suite('completion', () => {
       const expected = [
         new vscode.CompletionItem('check', vscode.CompletionItemKind.Class),
         new vscode.CompletionItem('data', vscode.CompletionItemKind.Class),
+        new vscode.CompletionItem('ephemeral', vscode.CompletionItemKind.Class),
         new vscode.CompletionItem('import', vscode.CompletionItemKind.Class),
         new vscode.CompletionItem('locals', vscode.CompletionItemKind.Class),
         new vscode.CompletionItem('module', vscode.CompletionItemKind.Class),
@@ -81,6 +82,7 @@ suite('completion', () => {
         new vscode.CompletionItem('count', vscode.CompletionItemKind.Property),
         new vscode.CompletionItem('depends_on', vscode.CompletionItemKind.Property),
         new vscode.CompletionItem('for_each', vscode.CompletionItemKind.Property),
+        new vscode.CompletionItem('lifecycle', vscode.CompletionItemKind.Class),
         new vscode.CompletionItem('machine_type', vscode.CompletionItemKind.Property),
         new vscode.CompletionItem('providers', vscode.CompletionItemKind.Property),
         new vscode.CompletionItem('version', vscode.CompletionItemKind.Property),
