@@ -19,6 +19,9 @@ jobs:
         env:
           FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
         with:
+          # Newer versions of `copywrite` are broken in the OpenTofu project, because
+          # they handle the legacy project headers differently. We shouldn't upgrade
+          # past 0.24.2.
           version: v0.24.2
       - name: "Copyright headers"
         run: |
