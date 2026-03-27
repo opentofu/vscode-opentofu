@@ -47,7 +47,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
           ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.merge_commit_sha || github.ref }}
 
@@ -81,7 +81,7 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/v')
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
       - name: Get tag version
         id: tag
         run: echo "version=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
@@ -133,12 +133,12 @@ jobs:
     runs-on: 'ubuntu-latest'
     steps:
       - name: Check out repository
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
         with:
           ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.merge_commit_sha || github.ref }}
 
       - name: Setup Node
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version-file: '.nvmrc'
           cache: npm
@@ -160,7 +160,7 @@ jobs:
         run: npm run package -- --target=${{ matrix.vsce_target }}
 
       - name: Upload vsix as artifact
-        uses: actions/upload-artifact@834a144ee995460fba8ed112a2fc961b36a5ec5a # v4.3.6
+        uses: actions/upload-artifact@834a144ee995460fba8ed112a2fc961b36a5ec5a # v4
         with:
           name: ${{ matrix.vsce_target }}
           path: '*.vsix'
@@ -171,7 +171,7 @@ jobs:
     needs: build
     if: always() && inputs.deploy_type == 'prerelease' && needs.build.result == 'success'
     steps:
-      - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4.1.8
+      - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4
       - name: Publish Prerelease to Marketplace
         run: npx vsce publish --pre-release --no-git-tag-version --packagePath $(find . -iname *.vsix)
         env:
@@ -184,7 +184,7 @@ jobs:
     # Run if the build has succeeded and we are not doing prerelease
     if: always() && inputs.deploy_type != 'prerelease' && needs.build.result == 'success'
     steps:
-      - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4.1.8
+      - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4
       - name: Publish Stable to Marketplace
         run: npx vsce publish --no-git-tag-version --packagePath $(find . -iname *.vsix)
         env:
@@ -197,7 +197,7 @@ jobs:
     # Run if the build has succeeded and we are not doing prerelease
     if: always() && inputs.deploy_type != 'prerelease' && needs.build.result == 'success'
     steps:
-      - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4.1.8
+      - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4
       - name: Publish Stable to OpenVSX
         run: npx ovsx publish --packagePath $(find . -iname *.vsix)
         env:
