@@ -183,6 +183,8 @@ To provide the extension with an up-to-date schema for the OpenTofu providers us
 1. Open any folder or VS Code workspace containing OpenTofu files.
 1. Open the Command Palette and run `OpenTofu: init current folder` or perform a `tofu init` from the terminal.
 
+For a detailed explanation of how the language server resolves provider schemas (including version constraints, lock files, and the embedded schema fallback), see the [provider schemas documentation](https://github.com/opentofu/tofu-ls/blob/main/docs/provider-schemas.md) in the tofu-ls repository.
+
 ### Remote Extension support
 
 The Visual Studio Code [Remote - WSL extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl) lets you use the Windows Subsystem for Linux (WSL) as your full-time development environment right from VS Code. You can author OpenTofu configuration files in a Linux-based environment, use Linux-specific toolchains and utilities from the comfort of Windows.
