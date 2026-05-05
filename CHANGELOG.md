@@ -7,7 +7,6 @@
 
 **Full Changelog**: https://github.com/opentofu/vscode-opentofu/compare/v0.6.0...v0.6.1
 
-
 ## v0.6.0 (2025-12-11)
 
 *Includes a new LS version - [tofu-ls 0.3.1](https://github.com/opentofu/tofu-ls/releases/tag/v0.3.1)*

@@ -2,9 +2,11 @@
 name: Publish Extension release
 
 permissions:
-  contents: write # for uploading release artifacts
+  contents: read
 
 on:
+  release:
+    types: [published]
   workflow_dispatch:
     inputs:
       deploy_type:
@@ -15,91 +17,28 @@ on:
         options:
           - stable
           - prerelease
-  push:
-    tags: ['v*']
-  pull_request:
-    types: [closed]
-    branches: [main]
 
 jobs:
-  validate-release-pr:
-    runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true
-    outputs:
-      has_release_label: ${{ steps.check_label.outputs.has_release_label }}
-    steps:
-      - name: Check if PR has release label
-        id: check_label
-        run: |
-          if [[ ${{ contains(github.event.pull_request.labels.*.name, 'release') }} = "true" ]]; then
-            echo "This workflow was triggered by the release PR merge"
-            echo "has_release_label=true" >> $GITHUB_OUTPUT
-          else
-            echo "PR does not have 'release' label. This workflow should only run for release PRs."
-            echo "has_release_label=false" >> $GITHUB_OUTPUT
-          fi
-
-  create-github-release:
-    runs-on: ubuntu-latest
-    needs: validate-release-pr
-    if: github.event.pull_request.merged == true && needs.validate-release-pr.outputs.has_release_label == 'true'
-    permissions:
-      contents: write
-    steps:
-      - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-        with:
-          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.merge_commit_sha || github.ref }}
-
-      - name: Get version from package.json
-        id: version
-        run: |
-          version=$(jq -r '.version' package.json)
-          echo "version=v$version" >> $GITHUB_OUTPUT
-
-      - name: Create GitHub Release
-        run: |
-          changes_file=".changes/${{ steps.version.outputs.version }}.md"
-          if [[ -f "$changes_file" ]]; then
-            # We need to remove mention of version and date, since those are duplicate
-            notes=$(tail -n +3 "$changes_file")
-            gh release create ${{ steps.version.outputs.version }} \
-              --title "${{ steps.version.outputs.version }}" \
-              --notes "$notes"
-          else
-            echo "No changes file found. Creating a draft release."
-            gh release create ${{ steps.version.outputs.version }} \
-              --draft \
-              --title "${{ steps.version.outputs.version }}" \
-              --generate-notes
-          fi
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
   check-version-file:
     runs-on: ubuntu-latest
-    if: startsWith(github.ref, 'refs/tags/v')
+    if: github.event_name == 'release'
     steps:
       - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-      - name: Get tag version
-        id: tag
-        run: echo "version=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
-      - name: Get file version
-        id: file
-        run: echo "version=$(jq ".version" package.json)" >> $GITHUB_OUTPUT
-      - name: Compare versions
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+      - name: Verify release tag matches package.json version
         run: |
-          if [ "${{ steps.tag.outputs.version }}" != "${{ steps.file.outputs.version }}" ]; then
-            echo "Tag version (${{ steps.tag.outputs.version }}) does not match file version (${{ steps.file.outputs.version }})"
+          tag_version="${GITHUB_REF#refs/tags/v}"
+          file_version=$(jq -r '.version' package.json)
+          if [ "$tag_version" != "$file_version" ]; then
+            echo "Release tag (v$tag_version) does not match package.json version ($file_version)"
             exit 1
           fi
-          echo "Version check passed: ${{ steps.tag.outputs.version }}"
+          echo "Version check passed: $tag_version"
+
   build:
     name: Package
-    needs: [check-version-file, create-github-release, validate-release-pr]
-    # Triggering this workflow, either if it was triggered by the tag push and went through validation, or release PR was merged, hence we check if we created automated github release
-    if: always() && (needs.check-version-file.result == 'success' || needs.create-github-release.result == 'success')
+    needs: [check-version-file]
+    if: always() && (needs.check-version-file.result == 'success' || needs.check-version-file.result == 'skipped')
     strategy:
       matrix:
         include:
@@ -130,12 +69,10 @@ jobs:
           - vsce_target: alpine-arm64
             ls_target: linux_arm64
             npm_config_arch: arm64
-    runs-on: 'ubuntu-latest'
+    runs-on: ubuntu-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
-        with:
-          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.merge_commit_sha || github.ref }}
 
       - name: Setup Node
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
@@ -154,9 +91,7 @@ jobs:
         run: npm run package -- --githubBranch $GITHUB_REF_NAME --pre-release --target=${{ matrix.vsce_target }}
 
       - name: Package Stable VSIX
-        # If the workflow trigger was manual, by tag push or by PR merge
-        # Currently release PR merge indicates stable release
-        if: (inputs.deploy_type == 'stable' || startsWith(github.ref, 'refs/tags/v') || github.event.pull_request.merged == true)
+        if: github.event_name == 'release' || inputs.deploy_type == 'stable'
         run: npm run package -- --target=${{ matrix.vsce_target }}
 
       - name: Upload vsix as artifact
@@ -169,7 +104,7 @@ jobs:
     name: Publish Prerelease to Marketplace
     runs-on: ubuntu-latest
     needs: build
-    if: always() && inputs.deploy_type == 'prerelease' && needs.build.result == 'success'
+    if: inputs.deploy_type == 'prerelease' && needs.build.result == 'success'
     steps:
       - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4
       - name: Publish Prerelease to Marketplace
@@ -181,8 +116,7 @@ jobs:
     name: Publish Marketplace
     runs-on: ubuntu-latest
     needs: build
-    # Run if the build has succeeded and we are not doing prerelease
-    if: always() && inputs.deploy_type != 'prerelease' && needs.build.result == 'success'
+    if: (github.event_name == 'release' || inputs.deploy_type == 'stable') && needs.build.result == 'success'
     steps:
       - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4
       - name: Publish Stable to Marketplace
@@ -194,8 +128,7 @@ jobs:
     name: Publish OpenVSX
     runs-on: ubuntu-latest
     needs: build
-    # Run if the build has succeeded and we are not doing prerelease
-    if: always() && inputs.deploy_type != 'prerelease' && needs.build.result == 'success'
+    if: (github.event_name == 'release' || inputs.deploy_type == 'stable') && needs.build.result == 'success'
     steps:
       - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4
       - name: Publish Stable to OpenVSX

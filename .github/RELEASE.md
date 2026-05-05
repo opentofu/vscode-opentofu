@@ -2,14 +2,16 @@
 
 Releases are made on a reasonably regular basis by the maintainers, using the [vsce tool](https://github.com/microsoft/vscode-vsce). The following notes are only relevant to maintainers.
 
-Release process:
+1. Create a PR against `main` with the following changes:
+   - Set the new version in `package.json`:
+     ```shell
+     npm version patch|minor|major --no-git-tag-version
+     ```
+   - Optionally update `langServer.version` in `package.json` if including a new `tofu-ls` version.
+   - Update `CHANGELOG.md` with the release notes for the new version.
 
-1. Once everything we need to include in the release is on the _main_ branch, trigger the "Prepare Release" workflow.
+1. Review and merge the PR.
 
-   - Depending on which type of release we are doing, select either: major, minor or patch.
-   - If the release should include a `tofu-ls` version update, set the `ls-version` input, e.g., 0.1.0, latest, etc.
+1. [Create and publish a GitHub release](https://github.com/opentofu/vscode-opentofu/releases/new) with tag `vX.Y.Z`, using the changelog entry as the release body.
 
-1. Once the workflow is finished, [put the created PR as "Ready To Review"](https://github.com/opentofu/vscode-opentofu/issues/112).
-1. Review the PR. Make adjustments if necessary and merge it.
-
-That is the whole flow. Once the PR is merged, the `Release` workflow will be triggered automatically.
+The [release workflow](workflows/release.yml) will automatically build the extension for all platforms and publish to the VS Code Marketplace and Open VSX Registry.
