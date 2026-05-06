@@ -2,9 +2,9 @@
 
 ## v0.6.2 (2026-05-06)
 
-This Github release doesn't add any new user-facing code, but the publishing
-of the VSCode extension will include the code that was supposed to be released
-on 0.6.1, but it wasn't published due to problems on the pipeline.
+This GitHub release doesn't add any new user-facing features. However,
+publishing the VS Code extension will include the code that was supposed to
+be released in version 0.6.1 but wasn’t published due to pipeline issues.
 
 **Full Changelog**: https://github.com/opentofu/vscode-opentofu/compare/v0.6.1...v0.6.2
 
