@@ -91,7 +91,7 @@ jobs:
         run: npm run package -- --githubBranch $GITHUB_REF_NAME --pre-release --target=${{ matrix.vsce_target }}
 
       - name: Package Stable VSIX
-        if: github.event_name == 'release' || inputs.deploy_type == 'stable'
+        if: inputs.deploy_type != 'prerelease'
         run: npm run package -- --target=${{ matrix.vsce_target }}
 
       - name: Upload vsix as artifact
@@ -99,6 +99,7 @@ jobs:
         with:
           name: ${{ matrix.vsce_target }}
           path: '*.vsix'
+          if-no-files-found: error
 
   publish-pre-marketplace:
     name: Publish Prerelease to Marketplace
@@ -116,7 +117,7 @@ jobs:
     name: Publish Marketplace
     runs-on: ubuntu-latest
     needs: build
-    if: (github.event_name == 'release' || inputs.deploy_type == 'stable') && needs.build.result == 'success'
+    if: inputs.deploy_type != 'prerelease' && needs.build.result == 'success'
     steps:
       - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4
       - name: Publish Stable to Marketplace
@@ -128,7 +129,7 @@ jobs:
     name: Publish OpenVSX
     runs-on: ubuntu-latest
     needs: build
-    if: (github.event_name == 'release' || inputs.deploy_type == 'stable') && needs.build.result == 'success'
+    if: inputs.deploy_type != 'prerelease' && needs.build.result == 'success'
     steps:
       - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4
       - name: Publish Stable to OpenVSX

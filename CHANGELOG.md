@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.6.2 (2026-05-06)
+
+This Github release doesn't add any new user-facing code, but the publishing
+of the VSCode extension will include the code that was supposed to be released
+on 0.6.1, but it wasn't published due to problems on the pipeline.
+
+**Full Changelog**: https://github.com/opentofu/vscode-opentofu/compare/v0.6.1...v0.6.2
+
 ## v0.6.1 (2026-04-28)
 
 *Includes a new LS version - [tofu-ls 0.4.1](https://github.com/opentofu/tofu-ls/releases/tag/v0.4.1):*
