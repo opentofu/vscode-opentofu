@@ -16,8 +16,8 @@
     "out": true
   },
 
-  "typescript.format.enable": false,
-  "typescript.tsc.autoDetect": "off",
+  "js/ts.format.enabled": false,
+  "js/ts.tsc.autoDetect": "off",
 
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"

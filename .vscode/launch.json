@@ -10,6 +10,13 @@
       "preLaunchTask": "${defaultBuildTask}"
     },
     {
+      "name": "Run Extension (no prebuild)",
+      "type": "extensionHost",
+      "request": "launch",
+      "args": ["--profile-temp", "--extensionDevelopmentPath=${workspaceFolder}"],
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"]
+    },
+    {
       "name": "Develop Extension",
       "type": "extensionHost",
       "request": "launch",
@@ -19,7 +26,7 @@
     },
     {
       "name": "Run Web Extension ",
-      "type": "pwa-extensionHost",
+      "type": "extensionHost",
       "debugWebWorkerHost": true,
       "request": "launch",
       "args": ["--extensionDevelopmentPath=${workspaceFolder}", "--extensionDevelopmentKind=web"],
