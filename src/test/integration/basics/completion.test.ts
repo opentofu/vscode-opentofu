@@ -42,6 +42,7 @@ suite('completion', () => {
         new vscode.CompletionItem('data', vscode.CompletionItemKind.Class),
         new vscode.CompletionItem('ephemeral', vscode.CompletionItemKind.Class),
         new vscode.CompletionItem('import', vscode.CompletionItemKind.Class),
+        new vscode.CompletionItem('language', vscode.CompletionItemKind.Class),
         new vscode.CompletionItem('locals', vscode.CompletionItemKind.Class),
         new vscode.CompletionItem('module', vscode.CompletionItemKind.Class),
         new vscode.CompletionItem('moved', vscode.CompletionItemKind.Class),
