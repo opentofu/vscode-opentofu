@@ -91,9 +91,9 @@ jobs:
         if: runner.os == 'Linux'
       - name: Run Tests
         run: npm test
-        if: runner.os != 'Linux' && runner.os != 'macOS'
-      - name: Run Tests on MacOS
-        run: npm test
-        if: runner.os == 'macOS'
-        env:
-          VSCODE_VERSION: 1.130.0 # v1.131.0 removed the /Contents/MacOS/Electron. TODO find a better fix for this
+        if: runner.os != 'Linux' # && runner.os != 'macOS'
+      # - name: Run Tests on MacOS
+      #   run: npm test
+      #   if: runner.os == 'macOS'
+      #   env:
+      #     VSCODE_VERSION: 1.130.0 # v1.131.0 removed the /Contents/MacOS/Electron. TODO find a better fix for this
