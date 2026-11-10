@@ -415,7 +415,7 @@
             "description": "Per-workspace list of paths for the language server to ignore when indexing files"
           },
           "opentofu.languageServer.indexing.ignoreDirectoryNames": {
-            "scope": "machine",
+            "scope": "machine-overridable",
             "type": "array",
             "items": {
               "type": "string"
